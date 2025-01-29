@@ -30,7 +30,7 @@ namespace AplicaçãoSupport.Controllers
             catch (Exception ex) {
                 return StatusCode(StatusCodes.Status500InternalServerError,
                     $"Um erro ocorreu ao solicitar a ação{ex}");
-            }
+            }   
         }
 
         // GET: api/<AtendenteController>
@@ -57,43 +57,70 @@ namespace AplicaçãoSupport.Controllers
         [HttpGet("{id:int}", Name ="ObterAtendente")]
         public ActionResult<Atendente> Get(int id)
         {
-            var Atendente = _context.Atendente.FirstOrDefault(p=> p.Atendente_Id == id);
-            if (Atendente == null)
+            try
             {
-                return NotFound("Não foi encontrado nenhum atendente com este ID");
+                var Atendente = _context.Atendente.FirstOrDefault(p => p.Atendente_Id == id);
+                if (Atendente == null)
+                {
+                    return NotFound("Não foi encontrado nenhum atendente com este ID");
+                }
+                return Atendente;
             }
-            return Atendente;
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Um erro ocorreu ao tentar executar a ação {ex}");
+            }
+
+
         }
 
-        // POST api/<AtendenteController>
         [HttpPost]
         public ActionResult Post(Atendente atendente)
         {
-            if (atendente is null) {
-                return BadRequest();
+            try
+            {
+                if (atendente is null)
+                {
+                    return BadRequest();
+                }
+
+                _context.Atendente.Add(atendente);
+                _context.SaveChanges();
+
+                return new CreatedAtRouteResult("ObterAtendente",
+                    new { id = atendente.Atendente_Id }, atendente);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Um erro ocorreu ao tentar executar a ação {ex}");
             }
 
-            _context.Atendente.Add(atendente);
-            _context.SaveChanges();
-
-            return new CreatedAtRouteResult("ObterAtendente",
-                new {id = atendente.Atendente_Id}, atendente);
-            
         }
 
-        // PUT api/<AtendenteController>/5
         [HttpPut("{id:int}")]
         public ActionResult Put(int id, Atendente atendente)
         {
-            if (id != atendente.Atendente_Id)
+            try
             {
-                return BadRequest();
+
+                if (id != atendente.Atendente_Id)
+                {
+                    return BadRequest();
+                }
+
+                _context.Entry(atendente).State = EntityState.Modified;
+                _context.SaveChanges();
+
+                return Ok(atendente);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Um erro ocorreu ao tentar executar a ação {ex}");
             }
 
-            _context.Entry(atendente).State = EntityState.Modified;
-            _context.SaveChanges();
-
-            return Ok(atendente);
 
         }
 
@@ -101,21 +128,30 @@ namespace AplicaçãoSupport.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            var atendente = _context.Atendente.FirstOrDefault(p => p.Atendente_Id == id);
-
-            if(id != atendente.Atendente_Id)
+            try
             {
-                return BadRequest();
-            }
-            if (atendente is null)
-            {
-                return NotFound();
-            }
 
-            _context.Atendente.Remove(atendente);
-            _context.SaveChanges();
+                var atendente = _context.Atendente.FirstOrDefault(p => p.Atendente_Id == id);
 
-            return Ok("Atendente deletado.");
+                if (id != atendente.Atendente_Id)
+                {
+                    return BadRequest();
+                }
+                if (atendente is null)
+                {
+                    return NotFound();
+                }
+
+                _context.Atendente.Remove(atendente);
+                _context.SaveChanges();
+
+                return Ok("Atendente deletado.");
+            }
+            catch (Exception ex) {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                $"Um erro ocorreu ao tentar executar a ação {ex}");
+            }
+            
         }
     }
 }

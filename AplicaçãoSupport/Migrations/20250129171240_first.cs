@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AplicaçãoSupport.Migrations
 {
     /// <inheritdoc />
-    public partial class fdivsl : Migration
+    public partial class first : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -53,12 +53,14 @@ namespace AplicaçãoSupport.Migrations
                 {
                     Atendimento_Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Problema = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false)
+                    ProblemaApresentado = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ResolucaoDoProblema = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Cliente_Atendido = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Data_Atendimento = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    Data_Inclusão = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    Data_Inclusao = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     EmpresaId = table.Column<int>(type: "int", nullable: true),
                     AtendenteId = table.Column<int>(type: "int", nullable: false)
                 },

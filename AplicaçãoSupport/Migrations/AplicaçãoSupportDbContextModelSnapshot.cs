@@ -59,16 +59,19 @@ namespace AplicaçãoSupport.Migrations
                     b.Property<DateTime>("Data_Atendimento")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("Data_Inclusão")
+                    b.Property<DateTime>("Data_Inclusao")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int?>("EmpresaId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Problema")
+                    b.Property<string>("ProblemaApresentado")
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
+
+                    b.Property<string>("ResolucaoDoProblema")
+                        .HasColumnType("longtext");
 
                     b.HasKey("Atendimento_Id");
 

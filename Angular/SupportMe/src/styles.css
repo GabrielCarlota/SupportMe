@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+
+body{
+    background: rgb(0,255,254);
+    background: linear-gradient(133deg, rgba(0,255,254,1) 0%, rgba(10,125,253,0.5956583316920518) 56%, rgba(18,80,251,0.6040616930365896) 100%); 
+    height: 100vh;
+    
+    color:white;
+}
+
+.mouse-hover{
+    cursor: pointer;
+}
+
+.grow-on-hover:hover{
+    transform: scale(1.4);
+    transition: all .6s;
+}   
+
+.gradient-informatica{
+    background: rgb(2,0,36);
+    background: linear-gradient(133deg, rgba(6, 0, 128, 0.788) 0%, rgba(9,9,121,0.5) 32%, rgb(0, 0, 0) 100%); 
+    color: white;
+}
+

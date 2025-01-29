@@ -1,0 +1,30 @@
+<div class="bg-primary-subtle text-center py-5 rounded">
+    <h1 class="display-6 fw-bold">Atendimentos</h1>
+</div>
+<div class="row mt-5">
+    <div class="col-6">
+        <app-atendimentos-form/>
+
+    </div>
+    <div class="col-6 row-2">
+        <ul class="list-group">
+            <li *ngFor="let at of service.list" class="gradient-informatica list-group-item d-flex 
+            justify-content-between align-itens-start mb-2 border
+             px-4 py-3 rounded">
+                <div class="flex-grow-1 mouse-hover">
+                    <div class="fw-bold ">Id Atendente: {{at.atendenteId}}</div>
+                    <div class="fw-bold">Cliente Atendido: {{at.cliente_Atendido}}</div>
+                    <div class="fw-bold">Empresa: {{at.empresaId}}</div>
+                    <div class="fw-bold text-danger">Problema: {{at.problemaApresentado}}</div>                    
+                    <div class="fw-bold text-success">Resolução: {{at.resolucaoDoProblema}}</div>                    
+                    <div class="fw-bold">Data Atendimento: {{at.data_Atendimento | date:'dd/MM/yyyy' }}</div>
+                    <div class="fw-bold">Data Inclusao: {{at.data_Inclusao | date:'dd/MM/yyyy' }}</div>
+                </div>
+                <span class="">
+                    <i class="text-danger px-2 fa-solid fa-trash fa-lg mouse-hover grow-on-hover"></i>
+                    <i class="fa-solid fa-book fa-lg grow-on-hover mouse-hover"></i>
+                </span>
+            </li>
+          </ul>
+    </div>
+</div>

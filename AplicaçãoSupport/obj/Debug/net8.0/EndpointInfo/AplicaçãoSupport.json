@@ -559,8 +559,8 @@
         "required": [
           "atendimento_Id",
           "data_Atendimento",
-          "data_Inclusão",
-          "problema"
+          "data_Inclusao",
+          "problemaApresentado"
         ],
         "type": "object",
         "properties": {
@@ -568,10 +568,14 @@
             "type": "integer",
             "format": "int32"
           },
-          "problema": {
+          "problemaApresentado": {
             "maxLength": 500,
             "minLength": 1,
             "type": "string"
+          },
+          "resolucaoDoProblema": {
+            "type": "string",
+            "nullable": true
           },
           "cliente_Atendido": {
             "type": "string",
@@ -581,7 +585,7 @@
             "type": "string",
             "format": "date-time"
           },
-          "data_Inclusão": {
+          "data_Inclusao": {
             "type": "string",
             "format": "date-time"
           },
