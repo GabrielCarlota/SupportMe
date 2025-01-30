@@ -39,7 +39,7 @@
     </div>
     <div class="row">
       <div class="g-3 mb-3 col-6">
-        <label for="">Problema apresentado</label>
+        <label for="">Problema apresentado</label>  
         <textarea
           class="form-control"
           name="Area do Problema"
@@ -88,8 +88,15 @@
         />
       </div>
     </div>
-    <div class="d-grid mt-4">
-      <button class="btn btn-success" type="submit">Salvar</button>
+    <div class="row col-6">
+      <button class="btn btn-success mb-4"
+       type="submit">Salvar</button>
+    <button (click)="ResetForm(form)" class="btn btn-danger">
+      Cancelar
+    </button>
     </div>
   </form>
-</div>
+  <div>
+    
+  </div>
+  </div>

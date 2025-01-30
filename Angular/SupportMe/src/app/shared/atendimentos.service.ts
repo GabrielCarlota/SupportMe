@@ -18,6 +18,10 @@ export class AtendimentosService {
     this.http.get(this.url).subscribe({ next: res => { this.list = res as Atendimentos[] }, error: err => { console.log(err) } })
   }
 
+  getAtendimentos(){
+    this.http.get(this.url)
+  }
+
   postAtendimentos() {
     return this.http.post(this.url, this.formData)
   }

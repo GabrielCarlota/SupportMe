@@ -16,6 +16,10 @@ export class AtendimentosFormComponent {
 
   }
 
+  ResetForm(form:NgForm){
+     form.reset(form)
+  }
+
   onSubmit(form: NgForm) {
     if (this.service.formData.atendimento_Id == 0)
       this.insertAtendimento(form)

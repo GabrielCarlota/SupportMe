@@ -26,6 +26,15 @@ namespace AplicaçãoSupport
             builder.Services.AddDbContext<AplicaçãoSupportDbContext>(options =>
             options.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection)));
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAnyOrigin", policy => 
+                policy.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                );
+            }); 
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -37,10 +46,7 @@ namespace AplicaçãoSupport
 
             app.UseHttpsRedirection();
 
-            app.UseCors(options => options.WithOrigins("http://localhost:4200").
-            AllowAnyHeader().
-            AllowAnyMethod());  
-
+            app.UseCors("AllowAnyOrigin");
             app.UseAuthorization();
             
 
