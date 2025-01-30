@@ -19,14 +19,14 @@ namespace AplicaçãoSupport.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Atendimentos>> Get()
+        public async Task<ActionResult<IEnumerable<Atendimentos>>> Get()
         {
             var atendimentos = _context.Atendimentos.Take(15).ToList();
             if (atendimentos is null)
             {
                 return NotFound();
             }
-            return _context.Atendimentos;
+            return Ok(await _context.Atendimentos.ToListAsync());
         }
 
 
@@ -44,7 +44,7 @@ namespace AplicaçãoSupport.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post(Atendimentos atendimentos)
+        public async Task<ActionResult> Post(Atendimentos atendimentos)
         {
             if (atendimentos is null)
             {
@@ -54,13 +54,12 @@ namespace AplicaçãoSupport.Controllers
             _context.Atendimentos.Add(atendimentos);
             _context.SaveChanges();
 
-            return new CreatedAtRouteResult("ObterAtendimento", 
-            new {id = atendimentos.Atendimento_Id}, atendimentos);
+            return Ok(await _context.Atendimentos.ToListAsync());
 
         }
 
         [HttpPut("{id:int}")]
-        public ActionResult Put(int id, Atendimentos atendimentos)
+        public async Task<ActionResult> Put(int id, Atendimentos atendimentos)
         {
             if(id != atendimentos.Atendimento_Id)
             {
@@ -69,11 +68,11 @@ namespace AplicaçãoSupport.Controllers
 
             _context.Entry(atendimentos).State = EntityState.Modified;
             _context.SaveChanges();
-            return Ok(atendimentos);    
+            return Ok(await _context.Atendimentos.ToListAsync());    
         }
 
         [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             var atendimentos = _context.Atendimentos.FirstOrDefault(a => a.Atendimento_Id == id);
             if (atendimentos is null)
@@ -86,7 +85,7 @@ namespace AplicaçãoSupport.Controllers
 
             _context.Remove(atendimentos);
             _context.SaveChanges();
-            return Ok(atendimentos);
+            return Ok(await _context.Atendimentos.ToListAsync());
 
         }
     }

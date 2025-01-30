@@ -1,43 +1,95 @@
-<form #form="ngForm" (submit)="onSubmit(form)">
-    <input type="hidden" name="AtendimentoId" [value]="service.formData.atendimento_Id">
-    <label class="mb-2" for="">Id do Atendente</label>
-    <div class="row g-3 mb-3 col-2">
-            <input class="form-control" placeholder=""
-            #atendenteId="ngModel" name="Id do atendente"[(ngModel)]="service.formData.atendenteId">
+<div class="">
+  <form #form="ngForm" (submit)="onSubmit(form)" class="">
+    <input
+      type="hidden"
+      name="AtendimentoId"
+      [value]="service.formData.atendimento_Id"
+    />
+    <div class="row">
+      <div class="g-3 mb-3 col-3">
+        <label class="mb-2" for="">Id do Atendente</label>
+        <input
+          class="form-control"
+          placeholder=""
+          #atendenteId="ngModel"
+          name="Id do atendente"
+          [(ngModel)]="service.formData.atendenteId"
+        />
+      </div>
+      <div class="g-3 mb-3 col-3">
+        <label class="mb-2" for="">Id da Empresa</label>
+        <input
+          class="form-control"
+          placeholder=""
+          #atendenteId="ngModel"
+          name="Id da empresa"
+          [(ngModel)]="service.formData.empresaId"
+        />
+      </div>
+      <div class="g-3 mb-3 col-6">
+        <label class="mb-2">Cliente Atendido</label>
+        <input
+          class="form-control"
+          placeholder=""
+          #atendenteId="ngModel"
+          name="Nome cliente"
+          [(ngModel)]="service.formData.cliente_Atendido"
+        />
+      </div>
     </div>
-    <label class="mb-2" for="">Id da Empresa</label>
-    <div class="row g-3 mb-3 col-2">
-            <input class="form-control" placeholder=""
-            #atendenteId="ngModel" name="Id da empresa"[(ngModel)]="service.formData.empresaId">
-    </div>
-        <div class="row g-3 mb-3 col-4">
-            <label for="">Cliente Atendido</label>
-            <input class="form-control" placeholder=""
-            #atendenteId="ngModel" name="Nome cliente"[(ngModel)]="service.formData.cliente_Atendido">
-     </div>
-     <div class="row"> 
-     <div class=" g-3 mb-3 col-6">
-            <label for="">Problema apresentado</label>
-            <textarea class="form-control" name="Area do Problema" id="Area do Problema" 
-            #problemaApresentado="ngModel" 
-            [(ngModel)]="service.formData.problemaApresentado"></textarea>
-    </div>
-    <div class="g-3 mb-3 col-6">
+    <div class="row">
+      <div class="g-3 mb-3 col-6">
+        <label for="">Problema apresentado</label>
+        <textarea
+          class="form-control"
+          name="Area do Problema"
+          id="Area do Problema"
+          #problemaApresentado="ngModel"
+          [(ngModel)]="service.formData.problemaApresentado"
+        ></textarea>
+      </div>
+      <div class="g-3 mb-3 col-6">
         <label for="">Resolução do Problema</label>
-        <textarea class="form-control" name="Resolução do Problema" id="Resolução do Problema" 
-        #resolucaoDoProblema="ngModel" 
-        [(ngModel)]="service.formData.resolucaoDoProblema"></textarea>
+        <textarea
+          class="form-control"
+          name="Resolução do Problema"
+          id="Resolução do Problema"
+          #resolucaoDoProblema="ngModel"
+          [(ngModel)]="service.formData.resolucaoDoProblema"
+        ></textarea>
+      </div>
     </div>
-    </div>
-    <div class="col-3">
-        <input type="date" class="form-control " name="Data Do Atendimento" id=""
-        #DataDoAtendimento="ngModel" name="Data do Atendimento" [(ngModel)]="service.formData.data_Atendimento">
-    </div>
-    <div class="col-3 mt-2">
-        <input type="date" class="form-control " name="Data Do Atendimento" id=""
-        #DataDoAtendimento="ngModel" name="Data do Atendimento" [(ngModel)]="service.formData.data_Inclusao">
+
+    <div class="row col-16">
+
+      <label for=""> Data do Atendimento</label>
+      <div class="col-6 mt-2 g-3 mb-3">
+        <input
+          type="date"
+          class="form-control"
+          name="Data Do Atendimento"
+          id=""
+          #DataDoAtendimento="ngModel"
+          name="Data do Atendimento"
+          [(ngModel)]="service.formData.data_Atendimento"
+        />
+      </div>
+
+      <label for="">Data da inclusão</label>
+      <div class="col-6 mt-2 g-3 mb-3">
+        <input
+          type="date"
+          class="form-control"
+          name="Data Da Inclusão"
+          id=""
+          #DataDoAtendimento="ngModel"
+          name="Data do Atendimento"
+          [(ngModel)]="service.formData.data_Inclusao"
+        />
+      </div>
     </div>
     <div class="d-grid mt-4">
-        <button class="btn btn-success" type="submit">Salvar</button>
+      <button class="btn btn-success" type="submit">Salvar</button>
     </div>
-</form>
+  </form>
+</div>
