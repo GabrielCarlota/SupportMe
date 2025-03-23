@@ -28,14 +28,16 @@ namespace AplicaçãoSupport
 
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowAnyOrigin", policy => 
-                policy.AllowAnyOrigin()
-                .AllowAnyHeader()
-                .AllowAnyMethod()
-                );
-            }); 
+                options.AddPolicy("AllowAll",
+                    policy => policy.AllowAnyOrigin()
+                                    .AllowAnyMethod()
+                                    .AllowAnyHeader());
+            });
 
             var app = builder.Build();
+
+            app.UseCors("AllowAll");
+
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -46,8 +48,10 @@ namespace AplicaçãoSupport
 
             app.UseHttpsRedirection();
 
-            app.UseCors("AllowAnyOrigin");
+            
             app.UseAuthorization();
+
+
             
 
             app.MapControllers();

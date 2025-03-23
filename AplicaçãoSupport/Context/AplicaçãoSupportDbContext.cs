@@ -2,6 +2,7 @@
 using AplicaçãoSupport.Context;
 using Microsoft.EntityFrameworkCore;
 using AplicaçãoSupport.Controllers;
+using AplicaçãoSupport.Models.AgendamentosModels;
 
 namespace AplicaçãoSupport.Context
 {
@@ -14,5 +15,7 @@ namespace AplicaçãoSupport.Context
         public DbSet<Atendente> Atendente { get; set; }
         public DbSet<Atendimentos> Atendimentos { get; set; }
         public DbSet<Empresa> Empresa { get; set; }
+        public DbSet<Agendamentos> Agendamentos { get; set; }
+        public DbSet<Clientes> Clientes { get; set; }
     }
 }

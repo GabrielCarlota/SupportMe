@@ -17,6 +17,7 @@ namespace AplicaçãoSupport.Models
         public string? Nome_Empresa { get; set; }
         [JsonIgnore]
         public ICollection<Atendimentos>? Atendimentos { get; set; }
-
+        [JsonIgnore]
+        public ICollection<Clientes>? Clientes { get; set; }
     }
 }

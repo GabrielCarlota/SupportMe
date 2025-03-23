@@ -22,6 +22,46 @@ namespace AplicaçãoSupport.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
+            modelBuilder.Entity("AplicaçãoSupport.Models.AgendamentosModels.Agendamentos", b =>
+                {
+                    b.Property<int>("AgendamentoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("AgendamentoId"));
+
+                    b.Property<int>("AtendenteId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ClienteNome")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ClienteTelefone")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("DataDaRealizacao")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DataDoAgendamento")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("DataInclusao")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("MotivoAgendamento")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Realizado")
+                        .IsRequired()
+                        .HasColumnType("varchar(1)");
+
+                    b.HasKey("AgendamentoId");
+
+                    b.HasIndex("AtendenteId");
+
+                    b.ToTable("Agendamentos");
+                });
+
             modelBuilder.Entity("AplicaçãoSupport.Models.Atendente", b =>
                 {
                     b.Property<int>("Atendente_Id")
@@ -82,6 +122,30 @@ namespace AplicaçãoSupport.Migrations
                     b.ToTable("Atendimentos");
                 });
 
+            modelBuilder.Entity("AplicaçãoSupport.Models.Clientes", b =>
+                {
+                    b.Property<int>("ClienteId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ClienteId"));
+
+                    b.Property<string>("ClienteNome")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ClienteTelefone")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("EmpresaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ClienteId");
+
+                    b.HasIndex("EmpresaId");
+
+                    b.ToTable("Clientes");
+                });
+
             modelBuilder.Entity("AplicaçãoSupport.Models.Empresa", b =>
                 {
                     b.Property<int>("EmpresaId")
@@ -96,6 +160,17 @@ namespace AplicaçãoSupport.Migrations
                     b.HasKey("EmpresaId");
 
                     b.ToTable("Empresa");
+                });
+
+            modelBuilder.Entity("AplicaçãoSupport.Models.AgendamentosModels.Agendamentos", b =>
+                {
+                    b.HasOne("AplicaçãoSupport.Models.Atendente", "Atendente")
+                        .WithMany()
+                        .HasForeignKey("AtendenteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Atendente");
                 });
 
             modelBuilder.Entity("AplicaçãoSupport.Models.Atendimentos", b =>
@@ -115,6 +190,17 @@ namespace AplicaçãoSupport.Migrations
                     b.Navigation("Empresa");
                 });
 
+            modelBuilder.Entity("AplicaçãoSupport.Models.Clientes", b =>
+                {
+                    b.HasOne("AplicaçãoSupport.Models.Empresa", "Empresa")
+                        .WithMany("Clientes")
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Empresa");
+                });
+
             modelBuilder.Entity("AplicaçãoSupport.Models.Atendente", b =>
                 {
                     b.Navigation("Atendimentos");
@@ -123,6 +209,8 @@ namespace AplicaçãoSupport.Migrations
             modelBuilder.Entity("AplicaçãoSupport.Models.Empresa", b =>
                 {
                     b.Navigation("Atendimentos");
+
+                    b.Navigation("Clientes");
                 });
 #pragma warning restore 612, 618
         }
