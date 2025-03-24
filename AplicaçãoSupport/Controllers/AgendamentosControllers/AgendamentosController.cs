@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿using AplicaçãoSupport.Context;
+using AplicaçãoSupport.Models;
+using AplicaçãoSupport.Models.AgendamentosModels;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AplicaçãoSupport.Controllers.AgendamentosControllers
 {
@@ -8,36 +10,136 @@ namespace AplicaçãoSupport.Controllers.AgendamentosControllers
     [ApiController]
     public class AgendamentosController : ControllerBase
     {
-        // GET: api/<AgendamentosController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+
+        private readonly AplicaçãoSupportDbContext _context;
+
+        public AgendamentosController(AplicaçãoSupportDbContext context)
         {
-            return new string[] { "value1", "value2" };
+            _context = context;
         }
 
-        // GET api/<AgendamentosController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET: api/<AgendamentosController>
+
+        [HttpGet]
+        public ActionResult<IEnumerable<Agendamentos>> GetAgendamento()
         {
-            return "value";
+            try
+            {
+                var Agendamento = _context.Agendamentos.Take(50).ToList();
+                if (Agendamento is null)
+                {
+                    return NotFound("Nenhum agendamento encontrado.");
+                }
+                return _context.Agendamentos;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Um erro ocorreu ao tentar executar a ação {ex}");
+            }
+        }
+
+
+        // GET api/<AgendamentosController>/5
+        [HttpGet("{id:int}", Name = "ObterAgendamento" )]
+        public ActionResult<Agendamentos> Get(int id)
+        {
+            try
+            {
+                var Agendamento = _context.Agendamentos.FirstOrDefault(a => a.AgendamentoId == id);
+                if (Agendamento == null)
+                {
+                    return NotFound("Não foi encontrado nenhum agendamento com este Id");
+                }
+                else
+                {
+                    return Agendamento;
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Um erro ocorreu ao tentar executar a ação, {ex}");
+            }
         }
 
         // POST api/<AgendamentosController>
         [HttpPost]
-        public void Post([FromBody]string value)
+        public ActionResult Post(Agendamentos agendamentos)
         {
+            try
+            {
+                if (agendamentos is null)
+                {
+                    return BadRequest();
+                }
+                else {
+                    _context.Agendamentos.Add(agendamentos);
+                    _context.SaveChanges();
+
+
+                    return new CreatedAtRouteResult("ObterAgendamento",
+                        new { id = agendamentos.AgendamentoId}, agendamentos);
+
+                }
+            }
+            catch (Exception ex) {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                $"Um erro ocorreu ao tentar executar a ação {ex}");
+            }
+
         }
 
         // PUT api/<AgendamentosController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPut("{id:int}")]
+        public ActionResult Put(int id, Agendamentos agendamentos)
         {
+            try
+            {
+                if(id != agendamentos.AgendamentoId)
+                {
+                    return BadRequest();
+                }
+
+                    _context.Entry(agendamentos).State = EntityState.Modified;
+                    _context.SaveChanges();
+
+                    return Ok(agendamentos);
+
+            }
+            catch (Exception ex) {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                $"Um erro ocorreu ao tentar executar a ação {ex}");
+            }
+
         }
 
         // DELETE api/<AgendamentosController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{id:int}")]
+        public ActionResult Delete(int id)
         {
+            try
+            {
+                var agendamentos = _context.Agendamentos.FirstOrDefault(i => i.AgendamentoId == id);
+
+                if (agendamentos is null)
+                {
+                    return BadRequest();
+                }
+                if (id != agendamentos.AgendamentoId)
+                {
+                    return BadRequest();
+                }
+
+                _context.Agendamentos.Remove(agendamentos);
+                _context.SaveChanges();
+
+                return Ok("Agendamento deletado.");
+            }
+            catch (Exception ex) {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                   $"Um erro ocorreu ao tentar executar a ação {ex}");
+            }
         }
     }
 }

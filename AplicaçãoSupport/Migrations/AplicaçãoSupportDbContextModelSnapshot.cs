@@ -33,11 +33,8 @@ namespace AplicaçãoSupport.Migrations
                     b.Property<int>("AtendenteId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ClienteNome")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("ClienteTelefone")
-                        .HasColumnType("longtext");
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("DataDaRealizacao")
                         .HasColumnType("datetime(6)");
@@ -58,6 +55,8 @@ namespace AplicaçãoSupport.Migrations
                     b.HasKey("AgendamentoId");
 
                     b.HasIndex("AtendenteId");
+
+                    b.HasIndex("ClienteId");
 
                     b.ToTable("Agendamentos");
                 });
@@ -170,7 +169,15 @@ namespace AplicaçãoSupport.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("AplicaçãoSupport.Models.Clientes", "Cliente")
+                        .WithMany("Agendamentos")
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Atendente");
+
+                    b.Navigation("Cliente");
                 });
 
             modelBuilder.Entity("AplicaçãoSupport.Models.Atendimentos", b =>
@@ -204,6 +211,11 @@ namespace AplicaçãoSupport.Migrations
             modelBuilder.Entity("AplicaçãoSupport.Models.Atendente", b =>
                 {
                     b.Navigation("Atendimentos");
+                });
+
+            modelBuilder.Entity("AplicaçãoSupport.Models.Clientes", b =>
+                {
+                    b.Navigation("Agendamentos");
                 });
 
             modelBuilder.Entity("AplicaçãoSupport.Models.Empresa", b =>

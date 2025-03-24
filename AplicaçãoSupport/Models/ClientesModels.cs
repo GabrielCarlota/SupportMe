@@ -18,6 +18,7 @@ namespace AplicaçãoSupport.Models
         public int EmpresaId { get; set; }
         [JsonIgnore]
         public Empresa? Empresa { get; set; }
+        [JsonIgnore]
         public ICollection<Agendamentos> Agendamentos { get; set; }
     }
 }

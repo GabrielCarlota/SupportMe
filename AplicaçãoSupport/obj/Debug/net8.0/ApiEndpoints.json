@@ -1,5 +1,105 @@
 [
   {
+    "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.AgendamentosControllers.AgendamentosController",
+    "Method": "GetAgendamento",
+    "RelativePath": "api/Agendamentos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Aplica\u00E7\u00E3oSupport.Models.AgendamentosModels.Agendamentos, Aplica\u00E7\u00E3oSupport, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.AgendamentosControllers.AgendamentosController",
+    "Method": "Post",
+    "RelativePath": "api/Agendamentos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agendamentos",
+        "Type": "Aplica\u00E7\u00E3oSupport.Models.AgendamentosModels.Agendamentos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.AgendamentosControllers.AgendamentosController",
+    "Method": "Get",
+    "RelativePath": "api/Agendamentos/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Aplica\u00E7\u00E3oSupport.Models.AgendamentosModels.Agendamentos",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "ObterAgendamento"
+  },
+  {
+    "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.AgendamentosControllers.AgendamentosController",
+    "Method": "Put",
+    "RelativePath": "api/Agendamentos/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "agendamentos",
+        "Type": "Aplica\u00E7\u00E3oSupport.Models.AgendamentosModels.Agendamentos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.AgendamentosControllers.AgendamentosController",
+    "Method": "Delete",
+    "RelativePath": "api/Agendamentos/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.AtendenteController",
     "Method": "GetAtendente",
     "RelativePath": "api/Atendente",
@@ -208,6 +308,136 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.ClientesController",
+    "Method": "Get",
+    "RelativePath": "api/Clientes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Aplica\u00E7\u00E3oSupport.Models.Clientes, Aplica\u00E7\u00E3oSupport, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.ClientesController",
+    "Method": "Post",
+    "RelativePath": "api/Clientes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clientes",
+        "Type": "Aplica\u00E7\u00E3oSupport.Models.Clientes",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Aplica\u00E7\u00E3oSupport.Models.Clientes",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.ClientesController",
+    "Method": "Get",
+    "RelativePath": "api/Clientes/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Aplica\u00E7\u00E3oSupport.Models.Clientes",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "ObterCliente"
+  },
+  {
+    "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.ClientesController",
+    "Method": "Put",
+    "RelativePath": "api/Clientes/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "clientes",
+        "Type": "Aplica\u00E7\u00E3oSupport.Models.Clientes",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Aplica\u00E7\u00E3oSupport.Models.Clientes",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.ClientesController",
+    "Method": "Delete",
+    "RelativePath": "api/Clientes/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Aplica\u00E7\u00E3oSupport.Models.Clientes",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.EmpresaController",

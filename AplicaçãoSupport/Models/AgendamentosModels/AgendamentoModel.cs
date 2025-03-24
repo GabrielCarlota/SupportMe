@@ -10,8 +10,9 @@ namespace AplicaçãoSupport.Models.AgendamentosModels
         public int AtendenteId { get; set; }
         [JsonIgnore]
         public Atendente? Atendente { get; set; }
-        public string? ClienteNome { get; set; }
-        public string? ClienteTelefone { get; set; }
+        public int ClienteId { get; set; }
+        [JsonIgnore]
+        public Clientes? Cliente { get; set; }
         public DateTime? DataDoAgendamento { get; set; }
         public DateTime? DataDaRealizacao { get; set; }
         public string? MotivoAgendamento { get; set; }
