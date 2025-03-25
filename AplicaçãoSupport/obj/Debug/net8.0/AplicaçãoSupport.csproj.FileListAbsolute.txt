@@ -260,3 +260,4 @@ C:\Users\GabrielNote\Documents\GitHub\SupportMe\AplicaçãoSupport\obj\Debug\net
 C:\Users\GabrielNote\Documents\GitHub\SupportMe\AplicaçãoSupport\obj\Debug\net8.0\AplicaçãoSupport.pdb
 C:\Users\GabrielNote\Documents\GitHub\SupportMe\AplicaçãoSupport\obj\Debug\net8.0\AplicaçãoSupport.genruntimeconfig.cache
 C:\Users\GabrielNote\Documents\GitHub\SupportMe\AplicaçãoSupport\obj\Debug\net8.0\ref\AplicaçãoSupport.dll
+C:\Users\GabrielNote\Documents\GitHub\SupportMe\AplicaçãoSupport\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

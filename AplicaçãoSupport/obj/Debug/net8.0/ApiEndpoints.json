@@ -220,6 +220,22 @@
     ]
   },
   {
+    "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.AtendenteController",
+    "Method": "Autenticate",
+    "RelativePath": "api/Atendente/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "atendente",
+        "Type": "Aplica\u00E7\u00E3oSupport.Models.Atendente",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.AtendimentosController",
     "Method": "Get",
     "RelativePath": "api/Atendimentos",

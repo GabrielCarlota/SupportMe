@@ -2,6 +2,7 @@
 using AplicaçãoSupport.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
+using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -53,6 +54,27 @@ namespace AplicaçãoSupport.Controllers
             }
         }
 
+        [HttpPost("Login")]
+        public async Task <IActionResult> Autenticate([FromBody]Atendente atendente)
+        {
+            if(atendente is null)
+            {
+                return BadRequest();
+            }
+
+            var atendenteLogin = await _context.Atendente
+                .FirstOrDefaultAsync(x => x.Nome_Atendente == atendente.Nome_Atendente && x.Senha == atendente.Senha);
+
+            if(atendenteLogin == null)
+            {
+                return Unauthorized();
+            }
+            return Ok(new
+            {
+                Message = "Usuario/a logado com sucesso"
+            });
+        }
+        
         // GET api/<AtendenteController>/5
         [HttpGet("{id:int}", Name ="ObterAtendente")]
         public ActionResult<Atendente> Get(int id)

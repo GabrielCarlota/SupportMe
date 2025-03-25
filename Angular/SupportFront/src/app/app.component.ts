@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FormAtendimentosComponent } from "./form-atendimentos/form-atendimentos.component";
-import { FormAgendamentosComponent } from "./form-agendamentos/form-agendamentos.component";
+import { FormAtendimentosComponent } from "./components/atendimentos/form-atendimentos.component";
+import { FormAgendamentosComponent } from "./components/agendamentos/form-agendamentos.component";
+import { LoginComponent } from './components/login/login.component';
 
 @Component({
   selector: 'app-root',
-  imports: [FormAtendimentosComponent, FormAgendamentosComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
