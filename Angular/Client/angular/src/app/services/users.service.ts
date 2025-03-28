@@ -20,7 +20,7 @@ export class UsersService {
   }
 
   addUser = (data: Atendente) => {
-    console.log("Add User data: ", data); 
+    console.log("Add User data: ", data);
     return this.http.post(`${this.apiUrl}/Registro`, data);
   };
 
