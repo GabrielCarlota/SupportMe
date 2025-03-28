@@ -1,19 +1,16 @@
-  import { Atendente } from '../../types/users';
-import { UsersService } from '../../services/users.service';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { UsersService } from '../services/users.service';
 import { Observable } from 'rxjs';
-import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideToastr, Toast, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
+import { Atendente } from '../types/users';
 
 @Component({
-  selector: 'app-users',
+  selector: 'app-home-page',
   imports: [],
-  providers: [],
-  templateUrl: './users.component.html',
-  styleUrl: './users.component.css'
+  templateUrl: './home-page.component.html',
+  styleUrl: './home-page.component.css'
 })
-
-export class UsersComponent implements OnInit{
+export class HomePageComponent {
 
   users!:Observable<Atendente[]>
   UserHttp = inject (UsersService);
@@ -36,5 +33,6 @@ export class UsersComponent implements OnInit{
       }
     })
   }
+
 
 }

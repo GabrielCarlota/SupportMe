@@ -11,6 +11,7 @@ import {
 } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Atendente } from '../../types/users';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
   usuarios!: Observable<Atendente[]>;
   ServicoUsuario = inject(UsersService);
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router, private toast: ToastrService) {}
 
   ngOnInit(): void {
     this.ServicoUsuario.getUsers().subscribe({
@@ -55,35 +56,38 @@ export class LoginComponent implements OnInit {
     this.isText = !this.isText;
     this.eyeIcon = this.isText ? 'fa-eye' : 'fa-eye-slash';
     this.type = this.isText ? 'text' : 'password';
+
+
+
   }
-
   OnSumbit() {
-    const usuario = this.loginForm.get('username')?.value;
-    const senha = this.loginForm.get('password')?.value;
+    if(this.loginForm.invalid){
+      alert("Preencha com os dados corretamente");
+    }
 
-    if (!usuario) {
-      location.reload();
-    }
-    if (!senha) {
-      location.reload();
-    }
+    const usuario = this.loginForm.get('username')?.value
+    const senha = this.loginForm.get('password')?.value
 
     const data: Atendente = {
       Nome_Atendente: usuario,
-      Senha: senha,
-    };
+      Senha: senha
+    }
 
-    if(!data || null){
-      location.reload();
-    }
-    else{
-      console.log(data);
-      this.ServicoUsuario.login(data).subscribe((res) => console.log(res));
-    }
+    this.ServicoUsuario.login(data).subscribe({
+      next: (res) =>{
+        console.log('Login Bem-Sucedido', res);
+        this.router.navigateByUrl('homePage');
+        this.toast.success("Usuario logado com sucesso!", "Sucesso", {closeButton: true})
+      },
+      error: (err) => {
+        console.log('Erro ao fazer o login', err);
+        this.toast.error("Favor verificar o login e senha", "Erro",{closeButton: true});
+      },
+    })
+
   }
 
   ToLogin(){
     this.router.navigateByUrl('registro');
   }
-
 }

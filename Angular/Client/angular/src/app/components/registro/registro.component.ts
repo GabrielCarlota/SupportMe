@@ -56,7 +56,7 @@ export class RegistroComponent {
     }
   }
 
-  ToLogin(){
+  ToLogin() {
     this.router.navigateByUrl('login');
     return;
   }
@@ -72,14 +72,13 @@ export class RegistroComponent {
     } else {
       if (senha === confSenha) {
         const data: Atendente = {
-          Nome_Atendente: this.RegisterForm.get('username')?.value,
-          Senha: this.RegisterForm.get('ConfPassword')?.value,
+          Nome_Atendente: usuario,
+          Senha: senha
         };
 
         if (senha != confSenha) {
           console.log('As senhas não combinam');
         }
-
         if (!senha) {
           console.log('Favor fornecer uma senha');
           return;
@@ -91,10 +90,11 @@ export class RegistroComponent {
 
         console.log(data);
 
-        if (!data || null) {
+        if (!data) {
           location.reload();
           console.log('Erro');
-        } else {
+        }
+        else {
           this.ServicoUsuario.addUser(data).subscribe((res) =>
             console.log(res)
           );
