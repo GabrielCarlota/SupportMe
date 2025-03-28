@@ -121,22 +121,6 @@
   },
   {
     "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.AtendenteController",
-    "Method": "Post",
-    "RelativePath": "api/Atendente",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "atendente",
-        "Type": "Aplica\u00E7\u00E3oSupport.Models.Atendente",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.AtendenteController",
     "Method": "Get",
     "RelativePath": "api/Atendente/{id}",
     "HttpMethod": "GET",
@@ -201,28 +185,24 @@
   },
   {
     "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.AtendenteController",
-    "Method": "GetAtendentesAtendimentos",
-    "RelativePath": "api/Atendente/Atendimentos",
-    "HttpMethod": "GET",
+    "Method": "Autenticate",
+    "RelativePath": "api/Atendente/Login",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
+    "Parameters": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Aplica\u00E7\u00E3oSupport.Models.Atendente, Aplica\u00E7\u00E3oSupport, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
+        "Name": "atendente",
+        "Type": "Aplica\u00E7\u00E3oSupport.Models.Atendente",
+        "IsRequired": true
       }
-    ]
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.AtendenteController",
-    "Method": "Autenticate",
-    "RelativePath": "api/Atendente/Login",
+    "Method": "Post",
+    "RelativePath": "api/Atendente/Registro",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

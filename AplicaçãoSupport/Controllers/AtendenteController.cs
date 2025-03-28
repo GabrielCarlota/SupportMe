@@ -1,5 +1,7 @@
 ﻿using AplicaçãoSupport.Context;
+using AplicaçãoSupport.Helpers;
 using AplicaçãoSupport.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using Microsoft.DotNet.Scaffolding.Shared.Messaging;
@@ -19,20 +21,6 @@ namespace AplicaçãoSupport.Controllers
             _context = context;
         }
 
-
-        [HttpGet("Atendimentos")]
-        public ActionResult<IEnumerable<Atendente>> GetAtendentesAtendimentos()
-        {
-            try
-            {
-                return _context.Atendente.Include(a => a.Atendimentos).Where(a => a.Atendente_Id <= 15).ToList();
-
-            }
-            catch (Exception ex) {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    $"Um erro ocorreu ao solicitar a ação{ex}");
-            }   
-        }
 
         // GET: api/<AtendenteController>
         [HttpGet]
@@ -54,27 +42,6 @@ namespace AplicaçãoSupport.Controllers
             }
         }
 
-        [HttpPost("Login")]
-        public async Task <IActionResult> Autenticate([FromBody]Atendente atendente)
-        {
-            if(atendente is null)
-            {
-                return BadRequest();
-            }
-
-            var atendenteLogin = await _context.Atendente
-                .FirstOrDefaultAsync(x => x.Nome_Atendente == atendente.Nome_Atendente && x.Senha == atendente.Senha);
-
-            if(atendenteLogin == null)
-            {
-                return Unauthorized();
-            }
-            return Ok(new
-            {
-                Message = "Usuario/a logado com sucesso"
-            });
-        }
-        
         // GET api/<AtendenteController>/5
         [HttpGet("{id:int}", Name ="ObterAtendente")]
         public ActionResult<Atendente> Get(int id)
@@ -97,7 +64,7 @@ namespace AplicaçãoSupport.Controllers
 
         }
 
-        [HttpPost]
+        [HttpPost("Registro")]
         public ActionResult Post(Atendente atendente)
         {
             try
@@ -106,7 +73,9 @@ namespace AplicaçãoSupport.Controllers
                 {
                     return BadRequest();
                 }
-
+                 
+                atendente.Senha = Hasher.HashPassword(atendente.Senha);
+                
                 _context.Atendente.Add(atendente);
                 _context.SaveChanges();
 
@@ -120,6 +89,37 @@ namespace AplicaçãoSupport.Controllers
             }
 
         }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> Autenticate([FromBody] Atendente atendente)
+        {
+            if (atendente is null)
+            {
+                return BadRequest();
+            }
+
+
+            var atendenteLogin = await _context.Atendente.
+                FirstOrDefaultAsync(a => a.Nome_Atendente == atendente.Nome_Atendente);
+
+            if (atendenteLogin == null)
+            {
+                return Unauthorized("Verfique os dados incluidos");
+            }
+
+            bool verified = Hasher.Verify(atendente.Senha, atendenteLogin.Senha);
+
+            if (!verified)
+            {
+                return BadRequest($"Senha incorreta para o usuario {atendenteLogin.Nome_Atendente}");
+            }
+
+            return Ok(new
+            {
+                Message = $"Usuário {atendenteLogin.Nome_Atendente} logado com sucesso"
+            });
+        }
+
 
         [HttpPut("{id:int}")]
         public ActionResult Put(int id, Atendente atendente)

@@ -70,6 +70,7 @@ namespace AplicaçãoSupport.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Atendente_Id"));
 
                     b.Property<string>("Nome_Atendente")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
