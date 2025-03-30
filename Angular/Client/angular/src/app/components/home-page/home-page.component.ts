@@ -1,10 +1,10 @@
-import { Atendimentos } from './../types/atendimentos';
+import { Atendimentos } from '../../types/atendimentos';
 import { Component, inject } from '@angular/core';
-import { UsersService } from '../services/users.service';
+import { UsersService } from '../../services/users.service';
 import { Observable, Subject } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { Atendente } from '../types/users';
-import { AtendimentosService } from '../services/atendimentos.service';
+import { Atendente } from '../../types/users';
+import { AtendimentosService } from '../../services/atendimentos.service';
 import { HttpClient } from '@angular/common/http';
 import 'datatables.net';
 import { CommonModule } from '@angular/common';
@@ -38,7 +38,7 @@ export class HomePageComponent {
 
     this.dtOptions = {
          pagingType: 'full_numbers',
-         pageLength: 10,
+         pageLength: 2,
          processing: true,
          scrollX: true,
        };
@@ -55,6 +55,11 @@ export class HomePageComponent {
 
       },
     })
+  }
+
+  OnRowDoubleClick(item: any){
+    console.log('linha clicada', item);
+
   }
 
   loadTable(){

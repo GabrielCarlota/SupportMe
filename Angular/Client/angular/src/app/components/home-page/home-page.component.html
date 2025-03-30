@@ -1,5 +1,5 @@
 <div class="h-full w-full flex">
-  <div class="w-1/2 h-1/2 flex p-10 ">
+  <div class="w-1/2 h-1/2">
     <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="border-amber-950 border cell-border display nowrap">
       <thead class="P-4">
         <tr>
@@ -11,11 +11,10 @@
           <th>ATENDENTE</th>
           <th>PROB APRE</th>
           <th>RES PROB</th>
-          <th>Açao</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of dados">
+        <tr *ngFor="let item of dados" (dblclick)="OnRowDoubleClick(item)">
           <td>{{ item.atendimento_Id }}</td>
           <td>{{ item.cliente_Atendido }}</td>
           <td>{{ item.empresaId }}</td>
@@ -24,15 +23,6 @@
           <td>{{ item.atendenteId }}</td>
           <td>{{ item.problemaApresentado }}</td>
           <td>{{ item.resolucaoDoProblema }}</td>
-          <td>
-            <button
-              (click)="ShowSuccees()"
-              type="button"
-              class="bg-amber-300 cursor-pointer p-2 rounded-2xl"
-            >
-              Click
-            </button>
-          </td>
         </tr>
       </tbody>
     </table>
