@@ -1,10 +1,10 @@
-export interface Atendimentos{
-  Atendimento_Id ?: number
- ProblemaApresentado : string
- ResolucaoDoProblema : string
- Cliente_Atendido : number
- Data_Atendimento : Date
- Data_Inclusao : Date
- EmpresaId : number
- AtendenteId : number
+  export interface Atendimentos{
+  atendimento_Id ?: number
+  problemaApresentado  : string
+ resolucaoDoProblema : string
+ cliente_Atendido : number
+ data_Atendimento : Date
+ data_Inclusao : Date
+ empresaId : number
+ atendenteId : number
 }

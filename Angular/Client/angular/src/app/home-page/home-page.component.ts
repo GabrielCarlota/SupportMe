@@ -1,14 +1,18 @@
+import { Atendimentos } from './../types/atendimentos';
 import { Component, inject } from '@angular/core';
 import { UsersService } from '../services/users.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { Atendente } from '../types/users';
 import { AtendimentosService } from '../services/atendimentos.service';
 import { HttpClient } from '@angular/common/http';
+import 'datatables.net';
+import { CommonModule } from '@angular/common';
+import {DataTablesModule} from 'angular-datatables'
 
 @Component({
   selector: 'app-home-page',
-  imports: [],
+  imports: [CommonModule, DataTablesModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
@@ -16,20 +20,35 @@ export class HomePageComponent {
 
   users!:Observable<Atendente[]>
   UserHttp = inject (UsersService);
-  serico = inject (AtendimentosService);
+  servico = inject (AtendimentosService);
 
-  constructor(private toast:ToastrService, private http: HttpClient, private service: AtendimentosService){}
+  AtendimentosList!: Atendimentos[]
+  dados: Atendimentos[] = [];
+  dtOptions: any = {};
+  dtTrigger: Subject<any> = new Subject<any[]>
+
+  constructor(private toast:ToastrService, private http: HttpClient){}
 
   ShowSuccees(){
     this.toast.success('Saved', 'Salvo com sucesso', {closeButton:true})
   }
 
   ngOnInit(){
-    this.serico.getAtendimentos().
+
+
+    this.dtOptions = {
+         pagingType: 'full_numbers',
+         pageLength: 10,
+         processing: true,
+         scrollX: true,
+       };
+
+    this.servico.getAtendimentos().
     subscribe({
       next:(res)=>{
+        this.dados = res;
         console.log("Os dados são: ",res);
-
+        this.dtTrigger.next(null)
       },
       error:(err) => {
         console.log(err?.err.error);
@@ -38,18 +57,13 @@ export class HomePageComponent {
     })
   }
 
- /* ngOnInit(): void {
-    this.UserHttp.getUsers().
-    subscribe({
-      next:(res)=>{
-        console.log(res);
-
-      },
-      error:(err)=>{
-        console.log(err?.err.error)
-      }
+  loadTable(){
+    this.servico.getAtendimentos().subscribe(item => {
+      this.AtendimentosList = item;
     })
   }
 
-*/
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
+  }
 }

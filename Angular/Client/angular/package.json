@@ -20,6 +20,7 @@
     "@angular/router": "^19.2.0",
     "angular-datatables": "^19.0.0",
     "datatables.net": "^2.0.3",
+    "datatables.net-bs5": "^2.0.3",
     "datatables.net-dt": "^2.0.3",
     "jquery": "^3.6.0",
     "ngx-toastr": "^19.0.0",

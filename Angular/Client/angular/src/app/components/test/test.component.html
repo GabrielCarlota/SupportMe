@@ -1,0 +1,29 @@
+<div class="">
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>CLIENTE</th>
+        <th>EMPRESA</th>
+        <th>DATA ATENDIMENTO</th>
+        <th>DAT INCL</th>
+        <th>ATENDENTE</th>
+        <th>PROB APRE</th>
+        <th>RES PROB</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(item of atendimentosList; track item){
+      <tr>
+        <td>{{item.atendimento_Id}}</td>
+        <td>{{item.cliente_Atendido}}</td>
+        <td>{{item.empresaId}}</td>
+        <td>{{item.data_Atendimento}}</td>
+        <td>{{item.data_Inclusao}}</td>
+        <td>{{item.atendenteId}}</td>
+        <td>{{item.problemaApresentado}}</td>
+        <td>{{item.resolucaoDoProblema}}</td>
+      </tr>}
+    </tbody>
+  </table>
+</div>

@@ -13,7 +13,9 @@ export class AtendimentosService {
 
   constructor(private http: HttpClient) {  }
 
-  getUsers=():Observable<Atendente[]>=> this.http.get<Atendente[]>(this.apiUrl)
+  loadAtt(){
+    return this.http.get<Atendimentos[]>(this.apiUrl)
+  }
 
   getAtendimentos=():Observable<Atendimentos[]>=> this.http.get<Atendimentos[]>(this.apiUrl)
 }
