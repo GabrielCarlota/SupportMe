@@ -3,6 +3,7 @@ using AplicaçãoSupport.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Configuration;
+using System.Net.WebSockets;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,6 +21,23 @@ namespace AplicaçãoSupport.Controllers
             _context = context;
         }
 
+        [HttpGet("GetEmpresas")]
+        public ActionResult<IEnumerable<Clientes>> GetClientesEmpresa()
+        {
+            var clientes = _context.Clientes
+                .Include(c => c.Empresa)
+                .Select(c => new
+                {
+                    IdCliente   = c.ClienteId,
+                    NomeCliente = c.ClienteNome,
+                    IdEmpresa   = c.EmpresaId,
+                    NomeEmpresa = c.Empresa.Nome_Empresa,
+
+                });
+
+            return Ok(clientes);
+        }
+
 
         // GET: api/<ClientesController>
         [HttpGet]
@@ -28,14 +46,15 @@ namespace AplicaçãoSupport.Controllers
             try
             {
                 var cliente = _context.Clientes.Take(50).ToList();
-                if(cliente is null)
+                if (cliente is null)
                 {
                     return NotFound("Não foi encontrado nenhum cliente");
 
                 }
                 return Ok(cliente);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 return StatusCode(StatusCodes.Status500InternalServerError,
                 $"Um erro ocorreu ao tentar executar a ação {ex}");
             }

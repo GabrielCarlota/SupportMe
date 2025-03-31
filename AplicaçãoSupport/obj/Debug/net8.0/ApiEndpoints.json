@@ -436,6 +436,26 @@
     ]
   },
   {
+    "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.ClientesController",
+    "Method": "GetClientesEmpresa",
+    "RelativePath": "api/Clientes/GetEmpresas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Aplica\u00E7\u00E3oSupport.Models.Clientes, Aplica\u00E7\u00E3oSupport, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.EmpresaController",
     "Method": "Get",
     "RelativePath": "api/Empresa",
@@ -534,5 +554,25 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.EmpresaController",
+    "Method": "GetEmpClientes",
+    "RelativePath": "api/Empresa/Clientes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Aplica\u00E7\u00E3oSupport.Models.Empresa, Aplica\u00E7\u00E3oSupport, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

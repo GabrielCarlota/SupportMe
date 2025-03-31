@@ -528,6 +528,44 @@
         }
       }
     },
+    "/api/Clientes/GetEmpresas": {
+      "get": {
+        "tags": [
+          "Clientes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Clientes"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Clientes"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Clientes"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Clientes": {
       "get": {
         "tags": [
@@ -741,6 +779,44 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Clientes"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Empresa/Clientes": {
+      "get": {
+        "tags": [
+          "Empresa"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Empresa"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Empresa"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Empresa"
+                  }
                 }
               }
             }
@@ -983,6 +1059,7 @@
           "atendimento_Id",
           "data_Atendimento",
           "data_Inclusao",
+          "horario_Atendimento",
           "problemaApresentado"
         ],
         "type": "object",
@@ -1007,6 +1084,10 @@
           "data_Atendimento": {
             "type": "string",
             "format": "date-time"
+          },
+          "horario_Atendimento": {
+            "type": "string",
+            "format": "time"
           },
           "data_Inclusao": {
             "type": "string",

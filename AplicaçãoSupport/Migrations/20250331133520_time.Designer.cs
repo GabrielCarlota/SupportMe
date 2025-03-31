@@ -4,6 +4,7 @@ using AplicaçãoSupport.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AplicaçãoSupport.Migrations
 {
     [DbContext(typeof(AplicaçãoSupportDbContext))]
-    partial class AplicaçãoSupportDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250331133520_time")]
+    partial class time
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,9 +107,6 @@ namespace AplicaçãoSupport.Migrations
 
                     b.Property<int?>("EmpresaId")
                         .HasColumnType("int");
-
-                    b.Property<TimeOnly>("Horario_Atendimento")
-                        .HasColumnType("time(6)");
 
                     b.Property<string>("ProblemaApresentado")
                         .IsRequired()

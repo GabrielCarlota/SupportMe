@@ -10,6 +10,7 @@ namespace AplicaçãoSupport.Models
     {
         public Empresa() {
             Atendimentos = new Collection<Atendimentos>();
+            Clientes = new Collection<Clientes>();
         }
         
         [Key]

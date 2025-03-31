@@ -16,13 +16,31 @@ namespace AplicaçãoSupport.Controllers
         public EmpresaController(AplicaçãoSupportDbContext context)
         {
             _context = context;
-        }    
+        }
+
+        [HttpGet("Clientes")]
+        public ActionResult<IEnumerable<Empresa>> GetEmpClientes()
+        {
+            var empresaClientes = _context.Empresa.Include(c => c.Clientes).Select(e => new
+            {
+                EmpresaId = e.EmpresaId,
+                Nome_Empresa = e.Nome_Empresa,
+                Clientes = e.Clientes.Select(c => new
+                {
+                    c.ClienteId,
+                    c.ClienteNome,
+                })
+            });
+
+            return Ok(empresaClientes);
+        }
 
         [HttpGet]
         public ActionResult<IEnumerable<Empresa>> Get()
         {
             var empresa = _context.Empresa.Take(15).ToList();
-            if (empresa is null) { 
+            if (empresa is null)
+            {
                 return NotFound();
             }
             return empresa;

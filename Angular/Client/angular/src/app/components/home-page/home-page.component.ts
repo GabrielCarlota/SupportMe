@@ -29,12 +29,7 @@ export class HomePageComponent {
 
   constructor(private toast:ToastrService, private http: HttpClient){}
 
-  ShowSuccees(){
-    this.toast.success('Saved', 'Salvo com sucesso', {closeButton:true})
-  }
-
   ngOnInit(){
-
 
     this.dtOptions = {
          pagingType: 'full_numbers',

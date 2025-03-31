@@ -254,7 +254,6 @@ C:\Users\GabrielNote\Documents\GitHub\SupportMe\AplicaçãoSupport\obj\Debug\net
 C:\Users\GabrielNote\Documents\GitHub\SupportMe\AplicaçãoSupport\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.AplicaçãoSupport.props
 C:\Users\GabrielNote\Documents\GitHub\SupportMe\AplicaçãoSupport\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.AplicaçãoSupport.props
 C:\Users\GabrielNote\Documents\GitHub\SupportMe\AplicaçãoSupport\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\GabrielNote\Documents\GitHub\SupportMe\AplicaçãoSupport\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\GabrielNote\Documents\GitHub\SupportMe\AplicaçãoSupport\obj\Debug\net8.0\Aplica__.F6C441CD.Up2Date
 C:\Users\GabrielNote\Documents\GitHub\SupportMe\AplicaçãoSupport\obj\Debug\net8.0\AplicaçãoSupport.dll
 C:\Users\GabrielNote\Documents\GitHub\SupportMe\AplicaçãoSupport\obj\Debug\net8.0\refint\AplicaçãoSupport.dll
@@ -523,3 +522,4 @@ D:\Projetos\SupportMe\AplicaçãoSupport\obj\Debug\net8.0\refint\AplicaçãoSupp
 D:\Projetos\SupportMe\AplicaçãoSupport\obj\Debug\net8.0\AplicaçãoSupport.pdb
 D:\Projetos\SupportMe\AplicaçãoSupport\obj\Debug\net8.0\AplicaçãoSupport.genruntimeconfig.cache
 D:\Projetos\SupportMe\AplicaçãoSupport\obj\Debug\net8.0\ref\AplicaçãoSupport.dll
+C:\Users\GabrielNote\Documents\GitHub\SupportMe\AplicaçãoSupport\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
