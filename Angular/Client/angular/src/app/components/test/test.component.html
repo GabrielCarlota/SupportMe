@@ -1,30 +1,73 @@
 <div class="bg-gray-200">
   <form action="" class="px-4 my-32 max-w-3xl mx-auto space-y-3">
-    <h1 class="text-2xl">Atendimentos Form</h1>
-    <p>Work smart not hard</p>
-    <div>
-      <label for="Atendente">Atendente</label>
-      <input type="text" name="Atendente" id="Atendente" class="border border-gray-400 block py-1 px-4 w-1/2 rounded-2xl focus:outline-none focus:border-blue-400"/>
+    <div class="">
+      <h1 class="text-3xl font-medium">Atendimentos Form</h1>
+      <p class="text-sm text-gray-600">Work smart not hard</p>
     </div>
-    <div>
-      <label for="Cliente">Cliente</label>
-      <input type="text" name="Cliente" id="Cliente" class="border border-gray-400 block py-1 px-4 w-1/2 rounded-2xl focus:outline-none focus:border-blue-400"/>
+
+    <div class="flex space-x-4">
+      <div>
+        <label for="Atendente">Atendente</label>
+        <input
+          type="text"
+          name="Atendente"
+          id="Atendente"
+          class="border shadow border-gray-400 block py-1 px-4 w-52 rounded-2xl focus:outline-none focus:border-blue-400 hover:border-blue-400 transition-all duration-700"
+        />
+      </div>
+      <div>
+        <label for="Cliente">Cliente</label>
+        <input
+          type="text"
+          name="Cliente"
+          id="Cliente"
+          class="border shadow border-gray-400 block py-1 px-4 w-52 rounded-2xl focus:outline-none focus:border-blue-400 hover:border-blue-400 transition-all duration-700"
+        />
+      </div>
     </div>
-    <div>
-      <label for="Empresa">Empresa</label>
-      <input type="text" name="Empresa" id="Empresa" class="border border-gray-400 block py-1 px-4 w-1/2 rounded-2xl focus:outline-none focus:border-blue-400"/>
+
+    <div class="flex space-x-4">
+      <div>
+        <label for="Empresa">Empresa</label>
+        <input
+          type="text"
+          name="Empresa"
+          id="Empresa"
+          class="border shadow border-gray-400 block py-1 px-4 w-52 rounded-2xl focus:outline-none focus:border-blue-400 hover:border-blue-400 transition-all duration-700 hover:"
+        />
     </div>
     <div>
       <label for="DataAtt">Data Atendimento</label>
-      <input type="text" name="DataAtt" id="DataAtt" class="border border-gray-400 block py-1 px-4 w-1/2 rounded-2xl focus:outline-none focus:border-blue-400"/>
+      <input
+        type="date"
+        name="DataAtt"
+        id="DataAtt"
+        class="border shadow border-gray-400 block py-1 px-4 w-52 rounded-2xl focus:outline-none focus:border-blue-400 hover:border-blue-400 transition-all duration-700 hover:"
+      />
     </div>
+  </div>
+
     <div>
       <label for="Problema">Problema Apresentado</label>
-      <input type="text" name="Problema" id="Problema" class="border border-gray-400 block py-1 px-4 w-1/2 rounded-2xl focus:outline-none focus:border-blue-400"/>
+      <textarea
+        name="Problema"
+        id="Problema"
+        rows="4"
+        class="border shadow border-gray-400 block py-1 px-4 w-10/17 rounded-2xl focus:outline-none focus:border-blue-400 hover:border-blue-400 transition-all duration-700 hover:"
+      ></textarea>
     </div>
     <div>
       <label for="Resolucao">Resolucao</label>
-      <input type="text" name="Resolucao" id="Resolucao" class="border border-gray-400 block py-1 px-4 w-1/2 rounded-2xl focus:outline-none focus:border-blue-400"/>
+      <textarea
+        rows="4"
+        name="Resolucao"
+        id="Resolucao"
+        class="border shadow border-gray-400 block py-1 px-4 w-10/17 rounded-2xl focus:outline-none focus:border-blue-400 hover:border-blue-400 transition-all duration-700 hover:"
+      ></textarea>
+    </div>
+    <div class="flex space-x-4">
+      <button type="button" class="cursor-pointer border border-gray-500 w-56 rounded-2xl h-12 shadow-gray-950 shadow hover:bg-black/10 bg-gray-500 transition-all duration-700 hover:scale-110">Salvar</button>
+      <button type="button" class="cursor-pointer border border-gray-500 w-56 rounded-2xl h-12 shadow-gray-950 shadow hover:bg-gray-800 bg-gray-800/70 text-white transition-all duration-700 hover:scale-110">Cancelar</button>
     </div>
   </form>
 </div>
