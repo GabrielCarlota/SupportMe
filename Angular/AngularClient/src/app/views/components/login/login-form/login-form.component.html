@@ -1,0 +1,47 @@
+<div class="">
+  <p-card class="" [style]="{ width: '360px' }">
+    <div class="text-center">
+      <h1 class="text-2xl">Login</h1>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="loginClicked()">
+
+    <div pFocusTrap class="w-full sm:w-80 flex flex-col gap-6 mt-8">
+      <p-iconfield>
+        <p-float-label>
+        <p-inputicon>
+          <i class="pi pi-user"></i>
+        </p-inputicon>
+        <input
+        formControlName="nome_Atendente"
+          type="text"
+          pInputText
+          name="Usuario"
+          id="Usuario"
+          [pAutoFocus]="true"
+          [fluid]="true"
+        />
+        <label for="in-label">Usuario</label>
+      </p-float-label>
+      </p-iconfield>
+
+      <p-iconfield class="mt-2">
+        <p-float-label>
+          <p-inputicon>
+            <i class="pi pi-lock"></i>
+          </p-inputicon>
+          <input
+            formControlName="senha"
+            type="password"
+            pInputText
+            name="Senha"
+            id="Senha"
+            [fluid]="true"
+          />
+          <label for="in-label">Senha</label>
+        </p-float-label>
+      </p-iconfield>
+      <p-button type="submit" label="Login" class="mt-2" styleClass="w-full" />
+    </div>
+  </form>
+  </p-card>
+</div>
