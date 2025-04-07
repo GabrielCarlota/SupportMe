@@ -12,6 +12,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Card } from 'primeng/card';
 import { Toast } from 'primeng/toast';
 import { Clientes } from '../../../../interfaces/cliente';
 import { CommonModule } from '@angular/common';
@@ -39,7 +40,8 @@ interface ExportData{
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    Toast
+    Toast,
+    Card
   ],
   templateUrl: './cliente-table.component.html',
   styleUrl: './cliente-table.component.css',
