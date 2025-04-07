@@ -87,8 +87,8 @@ export class ClienteTableComponent implements OnInit {
           detail:"Cliente incluido com sucesso",
           life:5000
         })
+        this.getClientes()
         this.clientesForm.reset()
-        console.log(value);
       },
       error:(err) => {
         this.ms.add({
@@ -97,7 +97,6 @@ export class ClienteTableComponent implements OnInit {
           detail: err.error?.message || "Erro ao incluir o atendente.",
           life:5000
         })
-        console.log(err);
       },
     });
   }
