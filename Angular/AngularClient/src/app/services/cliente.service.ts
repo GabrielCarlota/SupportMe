@@ -12,5 +12,10 @@ export class ClienteService {
 
   constructor(private http: HttpClient) { }
 
-  getClientes=():Observable<Clientes[]>=>this.http.get<Clientes[]>(`${this.apiUrl}`)
+  getClientes=():Observable<Clientes[]>=>this.http.get<Clientes[]>(`${this.apiUrl}`);
+
+  postCliente=(data:Clientes)=>{
+    console.log("Cliente data =", data);
+    return this.http.post(`${this.apiUrl}`, data)
+  }
 }

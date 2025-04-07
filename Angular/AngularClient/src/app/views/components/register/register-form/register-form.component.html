@@ -1,47 +1,76 @@
-<div class="">
+<div
+  class="flex justify-center items-center h-screen w-screen"
+>
+  <p-toast />
   <p-card class="" [style]="{ width: '360px' }">
-    <div class="text-center">
+    <div class="text-center font-bold mb-10">
       <h1 class="text-2xl">Registro</h1>
+      <p class="text-xs mt-2">
+        Ja tem uma conta? Faça
+        <a
+          (click)="toLogin()"
+          class="hover:scale-105 text-blue-400 cursor-pointer mt-4">Login</a>
+      </p>
     </div>
     <form [formGroup]="registroForm" (ngSubmit)="registroClicked()">
+      <div pFocusTrap class="w-full sm:w-80 flex flex-col gap-6 mt-8">
+        <p-iconfield>
+          <p-float-label>
+            <p-inputicon>
+              <i class="pi pi-user"></i>
+            </p-inputicon>
+            <label for="in-label">Usuario</label>
+            <input
+              formControlName="nome_Atendente"
+              type="text"
+              pInputText
+              name="Usuario"
+              id="Usuario"
+              [pAutoFocus]="true"
+              [fluid]="true"
+            />
+          </p-float-label>
+        </p-iconfield>
 
-    <div pFocusTrap class="w-full sm:w-80 flex flex-col gap-6 mt-8">
-      <p-iconfield>
-        <p-float-label>
-        <p-inputicon>
-          <i class="pi pi-user"></i>
-        </p-inputicon>
-        <input
-        formControlName="nome_Atendente"
-          type="text"
-          pInputText
-          name="Usuario"
-          id="Usuario"
-          [pAutoFocus]="true"
-          [fluid]="true"
+        <p-iconfield>
+          <p-floatlabel>
+            <p-password
+            [toggleMask]="true"
+              class=""
+              formControlName="senha"
+              inputId="senha"
+              name="senha"
+              [fluid]="true"
+            />
+            <label for="over_label"><i class="pi pi-lock"></i> Senha</label>
+          </p-floatlabel>
+        </p-iconfield>
+
+        <p-iconfield>
+          <p-floatlabel>
+            <p-password
+            [toggleMask]="true"
+              class=""
+              formControlName="confSenha"
+              inputId="confSenha"
+              name="confSenha"
+              [fluid]="true"
+            />
+            <label for="over_label"
+              ><i class="pi pi-lock"></i> Confirme a senha</label
+            >
+          </p-floatlabel>
+        </p-iconfield>
+
+        <p-button
+          [disabled]="registroForm.invalid"
+          type="submit"
+          label="Registrar-se"
+          class="mt-2"
+          styleClass="w-full"
         />
-        <label for="in-label">Usuario</label>
-      </p-float-label>
-      </p-iconfield>
-
-      <p-iconfield class="mt-2">
-        <p-float-label>
-          <p-inputicon>
-            <i class="pi pi-lock"></i>
-          </p-inputicon>
-          <input
-            formControlName="senha"
-            type="password"
-            pInputText
-            name="Senha"
-            id="Senha"
-            [fluid]="true"
-          />
-          <label for="in-label">Senha</label>
-        </p-float-label>
-      </p-iconfield>
-      <p-button type="submit" label="Registrar-se" class="mt-2" styleClass="w-full" />
-    </div>
-  </form>
+      </div>
+      <div class="mt-4 left-0 text-mono"></div>
+    </form>
   </p-card>
 </div>

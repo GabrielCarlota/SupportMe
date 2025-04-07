@@ -1,25 +1,81 @@
-<div class="">
-  <nav class="bg-gray-400  w-52 h-screen p-4">
-    <h1 class="text-2xl">Controle interno</h1>
-    <div class="mt-4 p-2 ">
-      <ul class="space-y-4">
-        <li routerLink="/homepage" class="cursor-pointer hover:scale-105 overflow-hidden w-48  hover:bg-black/5 transition-all duration-500 hover:p-4 hover:rounded-r-2xl">
-          <i class="fa fa-solid fa-house mr-2"></i>
-          <a>Home</a>
-        </li>
-        <li routerLink="/atendimentos" class="cursor-pointer hover:scale-105 overflow-hidden w-48  hover:bg-black/5 transition-all duration-500 hover:p-4 hover:rounded-r-2xl">
-          <i class="fa fa-solid fa-file-circle-plus mr-2"></i>
-          <a>Atendimentos</a>
-        </li>
-        <li routerLink="/clientes" class="cursor-pointer hover:scale-105 overflow-hidden w-48  hover:bg-black/5 transition-all duration-500 hover:p-4 hover:rounded-r-2xl">
-          <i class="fa fa-solid fa-user mr-2"></i>
-          <a>Clientes</a>
-        </li>
-        <li routerLink="/empresas" class="cursor-pointer hover:scale-105 overflow-hidden w-48  hover:bg-black/5 transition-all duration-500 hover:p-4 hover:rounded-r-2xl">
-          <i class="fa fa-solid fa-building mr-2"></i>
-          <a>Empresas</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<div class="card mb-2">
+  <p-menubar [model]="items" class="">
+    <ng-template #start> </ng-template>
+    <ng-template #item let-item let-root="root">
+      <a pRipple class="flex items-center p-menubar-item-link">
+        <span
+          ><p-button
+            icon="pi pi-bars"
+            (click)="drawerVisible = true"
+            label=""
+          ></p-button
+        ></span>
+      </a>
+    </ng-template>
+    <ng-template #end>
+      <div class="flex items-center gap-2">
+        <p-button icon="pi pi-bolt" label=""></p-button>
+        <p-avatar icon="pi pi-user" shape="circle" />
+      </div>
+    </ng-template>
+  </p-menubar>
 </div>
+
+<p-drawer [(visible)]="drawerVisible">
+  <div class="text-center items-center justify-center">
+    <h1 class="text-4xl text-slate-900 dark:text-slate-200">Dionisus</h1>
+  </div>
+  <div class="mt-4">
+    <h1 class="text-xl text-slate-700 dark:text-slate-100/50">Paginas</h1>
+    <ul class="p-2 mt-4">
+      <p-button
+        routerLink="/homepage"
+        icon="pi pi-home"
+        variant="text"
+        class="rounded-xl hover:p-2 hover:bg-black/5 text-purple-950 dark:text-slate-200 transition-all duration-200 ease-in"
+        label="Home"
+      ></p-button
+      ><br />
+      <p-button
+        routerLink="/atendimentos"
+        icon="pi pi-whatsapp"
+        variant="text"
+        class="rounded-xl hover:p-2 hover:bg-black/5 text-purple-950 dark:text-slate-200 transition-all duration-200 ease-in"
+        label="Atendimentos"
+      ></p-button
+      ><br />
+      <p-button
+        routerLink="/agendamentos"
+        icon="pi pi-address-book"
+        variant="text"
+        class="rounded-xl hover:p-2 hover:bg-black/5 text-purple-950 dark:text-slate-200 transition-all duration-200 ease-in"
+        label="Agendamentos"
+      ></p-button
+      ><br />
+      <p-button
+        routerLink="/clientes"
+        icon="pi pi-user-plus"
+        variant="text"
+        class="rounded-xl hover:p-2 hover:bg-black/5 text-purple-950 dark:text-slate-200 transition-all duration-200 ease-in"
+        label="Clientes"
+      ></p-button
+      ><br />
+      <p-button
+        routerLink="/empresas"
+        icon="pi pi-building"
+        variant="text"
+        class="rounded-xl hover:p-2 hover:bg-black/5 text-purple-950 dark:text-slate-200 transition-all duration-200 ease-in"
+        label="Empresas"
+      ></p-button
+      ><br />
+      <p-button
+        routerLink="/homepage"
+        icon="pi pi-briefcase"
+        variant="text"
+        class="rounded-xl hover:p-2 hover:bg-black/5 text-purple-950 dark:text-slate-200 transition-all duration-200 ease-in"
+        label="Dashboards"
+      ></p-button
+      >
+    </ul>
+  </div>
+</p-drawer>

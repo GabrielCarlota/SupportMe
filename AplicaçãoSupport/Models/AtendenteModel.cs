@@ -1,4 +1,5 @@
 ﻿using AplicaçãoSupport.Models.AgendamentosModels;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;

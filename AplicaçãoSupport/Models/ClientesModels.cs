@@ -15,6 +15,7 @@ namespace AplicaçãoSupport.Models
         public int ClienteId { get; set; }
         public string? ClienteNome { get; set; }
         public string? ClienteTelefone { get; set; }
+        public char Sintegra {  get; set; }
         public int EmpresaId { get; set; }
         [JsonIgnore]
         public Empresa? Empresa { get; set; }

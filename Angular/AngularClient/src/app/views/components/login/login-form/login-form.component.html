@@ -1,47 +1,55 @@
-<div class="">
+<div class="flex flex-col">
   <p-card class="" [style]="{ width: '360px' }">
-    <div class="text-center">
-      <h1 class="text-2xl">Login</h1>
+    <div class="text-center mb-10 font-bold">
+      <h1 class="text-2xl">Bem vindo!</h1>
+      <p class="mt-2 text-xs">
+        Ainda não tem uma conta?
+        <a class="text-blue-400 cursor-pointer font-bold" (click)="toRegister()"
+          >Registre-se</a>
+      </p>
     </div>
     <form [formGroup]="loginForm" (ngSubmit)="loginClicked()">
+      <div pFocusTrap class="w-full sm:w-80 flex flex-col gap-6">
+        <p-iconfield>
+          <p-float-label>
+            <p-inputicon>
+              <i class="pi pi-user"></i>
+            </p-inputicon>
+            <input
+              formControlName="nome_Atendente"
+              type="text"
+              pInputText
+              name="Usuario"
+              id="Usuario"
+              [pAutoFocus]="true"
+              [fluid]="true"
+            />
+            <label for="in-label">Usuario</label>
+          </p-float-label>
+        </p-iconfield>
 
-    <div pFocusTrap class="w-full sm:w-80 flex flex-col gap-6 mt-8">
-      <p-iconfield>
-        <p-float-label>
-        <p-inputicon>
-          <i class="pi pi-user"></i>
-        </p-inputicon>
-        <input
-        formControlName="nome_Atendente"
-          type="text"
-          pInputText
-          name="Usuario"
-          id="Usuario"
-          [pAutoFocus]="true"
-          [fluid]="true"
+        <p-iconfield class="mt-2">
+          <p-float-label>
+            <p-password
+              formControlName="senha"
+              type="password"
+              name="Senha"
+              id="Senha"
+              [fluid]="true"
+              [toggleMask]="true"
+            />
+            <label for="in-label"><i class="pi pi-lock"> </i> Senha</label>
+          </p-float-label>
+        </p-iconfield>
+
+        <p-button
+          
+          type="submit"
+          label="Login"
+          class="mt-2"
+          styleClass="w-full"
         />
-        <label for="in-label">Usuario</label>
-      </p-float-label>
-      </p-iconfield>
-
-      <p-iconfield class="mt-2">
-        <p-float-label>
-          <p-inputicon>
-            <i class="pi pi-lock"></i>
-          </p-inputicon>
-          <input
-            formControlName="senha"
-            type="password"
-            pInputText
-            name="Senha"
-            id="Senha"
-            [fluid]="true"
-          />
-          <label for="in-label">Senha</label>
-        </p-float-label>
-      </p-iconfield>
-      <p-button type="submit" label="Login" class="mt-2" styleClass="w-full" />
-    </div>
-  </form>
+      </div>
+    </form>
   </p-card>
 </div>
