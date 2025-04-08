@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AplicaçãoSupport.Migrations
 {
     [DbContext(typeof(AplicaçãoSupportDbContext))]
-    [Migration("20250408145848_fourthr")]
-    partial class fourthr
+    [Migration("20250408172659_fisrt")]
+    partial class fisrt
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -66,13 +66,13 @@ namespace AplicaçãoSupport.Migrations
 
             modelBuilder.Entity("AplicaçãoSupport.Models.Atendente", b =>
                 {
-                    b.Property<int>("Atendente_Id")
+                    b.Property<int>("AtendenteId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Atendente_Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("AtendenteId"));
 
-                    b.Property<string>("Nome_Atendente")
+                    b.Property<string>("NomeAtendente")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
@@ -80,18 +80,18 @@ namespace AplicaçãoSupport.Migrations
                     b.Property<string>("Senha")
                         .HasColumnType("longtext");
 
-                    b.HasKey("Atendente_Id");
+                    b.HasKey("AtendenteId");
 
                     b.ToTable("Atendente");
                 });
 
             modelBuilder.Entity("AplicaçãoSupport.Models.Atendimentos", b =>
                 {
-                    b.Property<int>("Atendimento_Id")
+                    b.Property<int>("AtendimentoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Atendimento_Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("AtendimentoId"));
 
                     b.Property<int>("AtendenteId")
                         .HasColumnType("int");
@@ -99,19 +99,16 @@ namespace AplicaçãoSupport.Migrations
                     b.Property<int?>("ClienteId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Data_Atendimento")
+                    b.Property<DateTime>("DataAtendimento")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("Data_Inclusao")
+                    b.Property<DateTime>("DataInclusao")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("EmpresaId")
-                        .HasColumnType("int");
-
-                    b.Property<TimeOnly>("Horario_Atendimento")
+                    b.Property<TimeOnly>("HorarioAtendimento")
                         .HasColumnType("time(6)");
 
-                    b.Property<TimeOnly>("Horario_Finalizacao")
+                    b.Property<TimeOnly>("HorarioFinalizacao")
                         .HasColumnType("time(6)");
 
                     b.Property<string>("ProblemaApresentado")
@@ -122,13 +119,11 @@ namespace AplicaçãoSupport.Migrations
                     b.Property<string>("ResolucaoDoProblema")
                         .HasColumnType("longtext");
 
-                    b.HasKey("Atendimento_Id");
+                    b.HasKey("AtendimentoId");
 
                     b.HasIndex("AtendenteId");
 
                     b.HasIndex("ClienteId");
-
-                    b.HasIndex("EmpresaId");
 
                     b.ToTable("Atendimentos");
                 });
@@ -169,7 +164,7 @@ namespace AplicaçãoSupport.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("EmpresaId"));
 
-                    b.Property<string>("Nome_Empresa")
+                    b.Property<string>("NomeEmpresa")
                         .HasColumnType("longtext");
 
                     b.HasKey("EmpresaId");
@@ -208,10 +203,6 @@ namespace AplicaçãoSupport.Migrations
                         .WithMany("Atendimentos")
                         .HasForeignKey("ClienteId");
 
-                    b.HasOne("AplicaçãoSupport.Models.Empresa", null)
-                        .WithMany("Atendimentos")
-                        .HasForeignKey("EmpresaId");
-
                     b.Navigation("Atendente");
 
                     b.Navigation("Cliente");
@@ -242,8 +233,6 @@ namespace AplicaçãoSupport.Migrations
 
             modelBuilder.Entity("AplicaçãoSupport.Models.Empresa", b =>
                 {
-                    b.Navigation("Atendimentos");
-
                     b.Navigation("Clientes");
                 });
 #pragma warning restore 612, 618

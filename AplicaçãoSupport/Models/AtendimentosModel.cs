@@ -7,19 +7,19 @@ namespace AplicaçãoSupport.Models
     public class Atendimentos
     {
         [Key, Required]
-        public int Atendimento_Id { get; set; }  
+        public int AtendimentoId { get; set; }  
 
         [Required, MaxLength(500)]
         public string? ProblemaApresentado { get; set; }
         public string? ResolucaoDoProblema { get; set; }
         [Required]
-        public DateTime Data_Atendimento { get; set; }
+        public DateTime DataAtendimento { get; set; }
         [Required]
-        public TimeOnly Horario_Atendimento { get; set; }
+        public TimeOnly HorarioAtendimento { get; set; }
         [Required]
-        public TimeOnly Horario_Finalizacao { get; set; }
+        public TimeOnly HorarioFinalizacao { get; set; }
         [Required]
-        public DateTime Data_Inclusao { get; set; }
+        public DateTime DataInclusao { get; set; }
 
         public int AtendenteId { get; set; }
         [JsonIgnore]

@@ -33,7 +33,7 @@ namespace AplicaçãoSupport.Controllers
         [HttpGet("{id:int}", Name = "ObterAtendimento")]
         public ActionResult Get(int id)
         {
-            var atendimentos = _context.Atendimentos.FirstOrDefault(a => a.Atendimento_Id == id);
+            var atendimentos = _context.Atendimentos.FirstOrDefault(a => a.AtendimentoId == id);
 
             if(atendimentos is null)
             {
@@ -61,7 +61,7 @@ namespace AplicaçãoSupport.Controllers
         [HttpPut("{id:int}")]
         public async Task<ActionResult> Put(int id, Atendimentos atendimentos)
         {
-            if(id != atendimentos.Atendimento_Id)
+            if(id != atendimentos.AtendimentoId)
             {
                 return BadRequest("Um erro ocorreu ao editar os dados!");
             }
@@ -74,12 +74,12 @@ namespace AplicaçãoSupport.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var atendimentos = _context.Atendimentos.FirstOrDefault(a => a.Atendimento_Id == id);
+            var atendimentos = _context.Atendimentos.FirstOrDefault(a => a.AtendimentoId == id);
             if (atendimentos is null)
             {
                 return NotFound();
             }
-            if (id != atendimentos.Atendimento_Id) {
+            if (id != atendimentos.AtendimentoId) {
                 return BadRequest();
                     }
 

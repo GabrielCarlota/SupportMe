@@ -33,7 +33,7 @@ namespace AplicaçãoSupport.Controllers
                     Sintegra = c.Sintegra,
                     ClienteTelefone = c.ClienteTelefone,
                     IdEmpresa   = c.EmpresaId,
-                    NomeEmpresa = c.Empresa.Nome_Empresa,
+                    NomeEmpresa = c.Empresa.NomeEmpresa,
 
                 });
 
@@ -109,7 +109,7 @@ namespace AplicaçãoSupport.Controllers
                     new {id = clientes.ClienteId},
                     new
                     {
-                        Mensagem = $"O cliente {clientes.ClienteNome} foi incluido na empresa {empresa.Nome_Empresa} de codigo {empresa.EmpresaId}",
+                        Mensagem = $"O cliente {clientes.ClienteNome} foi incluido na empresa {empresa.NomeEmpresa} de codigo {empresa.EmpresaId}",
                     });
             }
             catch (Exception ex)

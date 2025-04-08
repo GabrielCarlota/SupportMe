@@ -84,7 +84,7 @@ export class EmpresaFormComponent implements OnInit {
   addEmpresa() {
     const empresa: Empresa = {
       empresaId: Number(this.empresaForm.value.empresaId ?? 0),
-      nome_Empresa: this.empresaForm.value.nome_Empresa ?? '',
+      nomeEmpresa: this.empresaForm.value.nomeEmpresa ?? '',
     };
 
     if (this.editando && this.idEditando !== null) {
@@ -166,7 +166,7 @@ export class EmpresaFormComponent implements OnInit {
         this.ms.add({
           severity: 'success',
           summary: 'Sucesso',
-          detail: 'Clientes carregados com sucesso',
+          detail: 'Empresas carregadas com sucesso',
           life: 2000,
         });
       },
@@ -175,7 +175,7 @@ export class EmpresaFormComponent implements OnInit {
         this.ms.add({
           severity: 'error',
           summary: 'Erro',
-          detail: err.error?.message || 'Erro ao carregar os clientes',
+          detail: err.error?.message || 'Erro ao carregar as Empresas',
           life: 2000,
         });
       },
@@ -185,7 +185,7 @@ export class EmpresaFormComponent implements OnInit {
   editEmpresa(empresa: Empresa) {
     this.empresaForm.patchValue({
       empresaId: empresa.empresaId,
-      nome_Empresa: empresa.nome_Empresa,
+      nomeEmpresa: empresa.nomeEmpresa,
     });
     this.visivel = true;
     this.editando = true;
@@ -196,11 +196,11 @@ export class EmpresaFormComponent implements OnInit {
     this.getEmpresa();
     this.cols = [
       { cabecalho: 'Id', campo: 'empresaId' },
-      { cabecalho: 'Nome', campo: 'nome_Empresa' },
+      { cabecalho: 'Nome', campo: 'nomeEmpresa' },
     ];
 
     this.empresaForm = this.fb.group({
-      nome_Empresa: ['', Validators.required],
+      nomeEmpresa: ['', Validators.required],
     });
   }
 

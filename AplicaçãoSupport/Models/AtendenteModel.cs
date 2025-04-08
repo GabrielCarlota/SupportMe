@@ -15,10 +15,10 @@ namespace AplicaçãoSupport.Models
         }
 
         [Key]
-        public int Atendente_Id { get; set; }
+        public int AtendenteId { get; set; }
         [MaxLength(100)]
         [NotNull]
-        public string? Nome_Atendente { get; set; }
+        public string? NomeAtendente { get; set; }
 
         public string? Senha { get; set; }
         [JsonIgnore]

@@ -48,7 +48,7 @@ namespace AplicaçãoSupport.Controllers
         {
             try
             {
-                var Atendente = _context.Atendente.FirstOrDefault(p => p.Atendente_Id == id);
+                var Atendente = _context.Atendente.FirstOrDefault(p => p.AtendenteId == id);
                 if (Atendente == null)
                 {
                     return NotFound("Não foi encontrado nenhum atendente com este ID");
@@ -80,7 +80,7 @@ namespace AplicaçãoSupport.Controllers
                 _context.SaveChanges();
 
                 return new CreatedAtRouteResult("ObterAtendente",
-                    new { id = atendente.Atendente_Id }, atendente);
+                    new { id = atendente.AtendenteId }, atendente);
             }
             catch (Exception ex)
             {
@@ -100,7 +100,7 @@ namespace AplicaçãoSupport.Controllers
 
 
             var atendenteLogin = await _context.Atendente.
-                FirstOrDefaultAsync(a => a.Nome_Atendente == atendente.Nome_Atendente);
+                FirstOrDefaultAsync(a => a.NomeAtendente == atendente.NomeAtendente);
 
             if (atendenteLogin == null)
             {
@@ -111,12 +111,12 @@ namespace AplicaçãoSupport.Controllers
 
             if (!verified)
             {
-                return BadRequest($"Senha incorreta para o usuario {atendenteLogin.Nome_Atendente}");
+                return BadRequest($"Senha incorreta para o usuario {atendenteLogin.NomeAtendente}");
             }
 
             return Ok(new
             {
-                Message = $"Usuário {atendenteLogin.Nome_Atendente} logado com sucesso"
+                Message = $"Usuário {atendenteLogin.NomeAtendente} logado com sucesso"
             });
         }
 
@@ -127,7 +127,7 @@ namespace AplicaçãoSupport.Controllers
             try
             {
 
-                if (id != atendente.Atendente_Id)
+                if (id != atendente.AtendenteId)
                 {
                     return BadRequest();
                 }
@@ -153,9 +153,9 @@ namespace AplicaçãoSupport.Controllers
             try
             {
 
-                var atendente = _context.Atendente.FirstOrDefault(p => p.Atendente_Id == id);
+                var atendente = _context.Atendente.FirstOrDefault(p => p.AtendenteId == id);
 
-                if (id != atendente.Atendente_Id)
+                if (id != atendente.AtendenteId)
                 {
                     return BadRequest();
                 }

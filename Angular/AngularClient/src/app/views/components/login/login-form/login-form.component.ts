@@ -49,7 +49,7 @@ export class LoginFormComponent implements OnInit {
   accept: boolean = false;
 
   loginForm = new FormGroup({
-    nome_Atendente: new FormControl(''),
+    nomeAtendente: new FormControl(''),
     senha: new FormControl(''),
   });
 
@@ -71,7 +71,7 @@ export class LoginFormComponent implements OnInit {
 
   loginClicked() {
     const att: Atendente = {
-      nome_Atendente: this.loginForm.value.nome_Atendente ?? '',
+      nomeAtendente: this.loginForm.value.nomeAtendente ?? '',
       senha: this.loginForm.value.senha ?? '',
     };
 

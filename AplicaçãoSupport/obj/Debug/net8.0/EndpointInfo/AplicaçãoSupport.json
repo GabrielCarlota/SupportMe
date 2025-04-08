@@ -1038,11 +1038,11 @@
       "Atendente": {
         "type": "object",
         "properties": {
-          "atendente_Id": {
+          "atendenteId": {
             "type": "integer",
             "format": "int32"
           },
-          "nome_Atendente": {
+          "nomeAtendente": {
             "maxLength": 100,
             "type": "string",
             "nullable": true
@@ -1056,16 +1056,16 @@
       },
       "Atendimentos": {
         "required": [
-          "atendimento_Id",
-          "data_Atendimento",
-          "data_Inclusao",
-          "horario_Atendimento",
-          "horario_Finalizacao",
+          "atendimentoId",
+          "dataAtendimento",
+          "dataInclusao",
+          "horarioAtendimento",
+          "horarioFinalizacao",
           "problemaApresentado"
         ],
         "type": "object",
         "properties": {
-          "atendimento_Id": {
+          "atendimentoId": {
             "type": "integer",
             "format": "int32"
           },
@@ -1078,19 +1078,19 @@
             "type": "string",
             "nullable": true
           },
-          "data_Atendimento": {
+          "dataAtendimento": {
             "type": "string",
             "format": "date-time"
           },
-          "horario_Atendimento": {
+          "horarioAtendimento": {
             "type": "string",
             "format": "time"
           },
-          "horario_Finalizacao": {
+          "horarioFinalizacao": {
             "type": "string",
             "format": "time"
           },
-          "data_Inclusao": {
+          "dataInclusao": {
             "type": "string",
             "format": "date-time"
           },
@@ -1138,7 +1138,7 @@
             "type": "integer",
             "format": "int32"
           },
-          "nome_Empresa": {
+          "nomeEmpresa": {
             "type": "string",
             "nullable": true
           }

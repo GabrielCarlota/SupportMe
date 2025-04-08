@@ -24,7 +24,7 @@ namespace AplicaçãoSupport.Controllers
             var empresaClientes = _context.Empresa.Include(c => c.Clientes).Select(e => new
             {
                 EmpresaId = e.EmpresaId,
-                Nome_Empresa = e.Nome_Empresa,
+                NomeEmpresa = e.NomeEmpresa,
                 Clientes = e.Clientes.Select(c => new
                 {
                     c.ClienteId,

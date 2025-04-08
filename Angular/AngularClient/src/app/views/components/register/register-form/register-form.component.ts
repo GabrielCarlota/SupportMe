@@ -64,7 +64,7 @@ export class RegisterFormComponent implements OnInit {
   ngOnInit(): void {
     this.registroForm = this.fb.group(
       {
-        nome_Atendente: ['', Validators.required],
+        nomeAtendente: ['', Validators.required],
         senha: ['', [Validators.required, Validators.minLength(6)]],
         confSenha: ['', Validators.required],
       },
@@ -84,7 +84,7 @@ export class RegisterFormComponent implements OnInit {
 
   registroClicked() {
     const novoAtendente: Atendente = {
-      nome_Atendente: this.registroForm.value.nome_Atendente ?? '',
+      nomeAtendente: this.registroForm.value.nomeAtendente ?? '',
       senha: this.registroForm.value.senha ?? '',
     };
 

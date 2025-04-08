@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AplicaçãoSupport.Migrations
 {
     /// <inheritdoc />
-    public partial class fourth : Migration
+    public partial class fisrt : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,16 +19,16 @@ namespace AplicaçãoSupport.Migrations
                 name: "Atendente",
                 columns: table => new
                 {
-                    Atendente_Id = table.Column<int>(type: "int", nullable: false)
+                    AtendenteId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome_Atendente = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
+                    NomeAtendente = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Senha = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Atendente", x => x.Atendente_Id);
+                    table.PrimaryKey("PK_Atendente", x => x.AtendenteId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -38,7 +38,7 @@ namespace AplicaçãoSupport.Migrations
                 {
                     EmpresaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome_Empresa = table.Column<string>(type: "longtext", nullable: true)
+                    NomeEmpresa = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -96,7 +96,7 @@ namespace AplicaçãoSupport.Migrations
                         name: "FK_Agendamentos_Atendente_AtendenteId",
                         column: x => x.AtendenteId,
                         principalTable: "Atendente",
-                        principalColumn: "Atendente_Id",
+                        principalColumn: "AtendenteId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Agendamentos_Clientes_ClienteId",
@@ -111,39 +111,33 @@ namespace AplicaçãoSupport.Migrations
                 name: "Atendimentos",
                 columns: table => new
                 {
-                    Atendimento_Id = table.Column<int>(type: "int", nullable: false)
+                    AtendimentoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ProblemaApresentado = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ResolucaoDoProblema = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Data_Atendimento = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    Horario_Atendimento = table.Column<TimeOnly>(type: "time(6)", nullable: false),
-                    Horario_Finalizacao = table.Column<TimeOnly>(type: "time(6)", nullable: false),
-                    Data_Inclusao = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    DataAtendimento = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    HorarioAtendimento = table.Column<TimeOnly>(type: "time(6)", nullable: false),
+                    HorarioFinalizacao = table.Column<TimeOnly>(type: "time(6)", nullable: false),
+                    DataInclusao = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     AtendenteId = table.Column<int>(type: "int", nullable: false),
-                    ClienteId = table.Column<int>(type: "int", nullable: true),
-                    EmpresaId = table.Column<int>(type: "int", nullable: true)
+                    ClienteId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Atendimentos", x => x.Atendimento_Id);
+                    table.PrimaryKey("PK_Atendimentos", x => x.AtendimentoId);
                     table.ForeignKey(
                         name: "FK_Atendimentos_Atendente_AtendenteId",
                         column: x => x.AtendenteId,
                         principalTable: "Atendente",
-                        principalColumn: "Atendente_Id",
+                        principalColumn: "AtendenteId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Atendimentos_Clientes_ClienteId",
                         column: x => x.ClienteId,
                         principalTable: "Clientes",
                         principalColumn: "ClienteId");
-                    table.ForeignKey(
-                        name: "FK_Atendimentos_Empresa_EmpresaId",
-                        column: x => x.EmpresaId,
-                        principalTable: "Empresa",
-                        principalColumn: "EmpresaId");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -166,11 +160,6 @@ namespace AplicaçãoSupport.Migrations
                 name: "IX_Atendimentos_ClienteId",
                 table: "Atendimentos",
                 column: "ClienteId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Atendimentos_EmpresaId",
-                table: "Atendimentos",
-                column: "EmpresaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Clientes_EmpresaId",
