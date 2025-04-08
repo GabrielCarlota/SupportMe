@@ -30,6 +30,8 @@ namespace AplicaçãoSupport.Controllers
                 {
                     IdCliente   = c.ClienteId,
                     NomeCliente = c.ClienteNome,
+                    Sintegra = c.Sintegra,
+                    ClienteTelefone = c.ClienteTelefone,
                     IdEmpresa   = c.EmpresaId,
                     NomeEmpresa = c.Empresa.Nome_Empresa,
 

@@ -1060,6 +1060,7 @@
           "data_Atendimento",
           "data_Inclusao",
           "horario_Atendimento",
+          "horario_Finalizacao",
           "problemaApresentado"
         ],
         "type": "object",
@@ -1077,10 +1078,6 @@
             "type": "string",
             "nullable": true
           },
-          "cliente_Atendido": {
-            "type": "string",
-            "nullable": true
-          },
           "data_Atendimento": {
             "type": "string",
             "format": "date-time"
@@ -1089,18 +1086,22 @@
             "type": "string",
             "format": "time"
           },
+          "horario_Finalizacao": {
+            "type": "string",
+            "format": "time"
+          },
           "data_Inclusao": {
             "type": "string",
             "format": "date-time"
           },
-          "empresaId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
           "atendenteId": {
             "type": "integer",
             "format": "int32"
+          },
+          "clienteId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         },
         "additionalProperties": false

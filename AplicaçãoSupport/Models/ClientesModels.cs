@@ -9,6 +9,7 @@ namespace AplicaçãoSupport.Models
     {
         public Clientes() { 
             Agendamentos = new Collection<Agendamentos>();
+            Atendimentos = new Collection<Atendimentos>();
         }
 
         [Key]
@@ -21,5 +22,7 @@ namespace AplicaçãoSupport.Models
         public Empresa? Empresa { get; set; }
         [JsonIgnore]
         public ICollection<Agendamentos> Agendamentos { get; set; }
+        [JsonIgnore]
+        public ICollection<Atendimentos> Atendimentos { get; set; }
     }
 }

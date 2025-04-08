@@ -190,7 +190,7 @@ export class ClienteTableComponent implements OnInit {
         });
       },
       error: (err) => {
-        this.ms.add({
+          this.ms.add({
           severity: 'error',
           summary: 'Erro',
           detail: err.error?.message || 'Erro ao carregar os clientes',
@@ -220,11 +220,11 @@ export class ClienteTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.cols = [
-      { cabecalho: 'Id', campo: 'clienteId' },
-      { cabecalho: 'Nome', campo: 'clienteNome' },
+      { cabecalho: 'Id', campo: 'idCliente' },
+      { cabecalho: 'Nome', campo: 'nomeCliente' },
       { cabecalho: 'Telefone', campo: 'clienteTelefone' },
       { cabecalho: 'Sintegra', campo: 'sintegra' },
-      { cabecalho: 'Empresa', campo: 'empresaId' },
+      { cabecalho: 'Empresa', campo: 'nomeEmpresa' },
     ];
 
     this.getClientes();

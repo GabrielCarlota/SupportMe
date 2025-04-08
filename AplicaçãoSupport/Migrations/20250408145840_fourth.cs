@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AplicaçãoSupport.Migrations
 {
     /// <inheritdoc />
-    public partial class first : Migration
+    public partial class fourth : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,7 +21,7 @@ namespace AplicaçãoSupport.Migrations
                 {
                     Atendente_Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome_Atendente = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true)
+                    Nome_Atendente = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Senha = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
@@ -48,40 +48,6 @@ namespace AplicaçãoSupport.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Atendimentos",
-                columns: table => new
-                {
-                    Atendimento_Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ProblemaApresentado = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    ResolucaoDoProblema = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Cliente_Atendido = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Data_Atendimento = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    Data_Inclusao = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    EmpresaId = table.Column<int>(type: "int", nullable: true),
-                    AtendenteId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Atendimentos", x => x.Atendimento_Id);
-                    table.ForeignKey(
-                        name: "FK_Atendimentos_Atendente_AtendenteId",
-                        column: x => x.AtendenteId,
-                        principalTable: "Atendente",
-                        principalColumn: "Atendente_Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Atendimentos_Empresa_EmpresaId",
-                        column: x => x.EmpresaId,
-                        principalTable: "Empresa",
-                        principalColumn: "EmpresaId");
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "Clientes",
                 columns: table => new
                 {
@@ -90,6 +56,8 @@ namespace AplicaçãoSupport.Migrations
                     ClienteNome = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ClienteTelefone = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Sintegra = table.Column<string>(type: "varchar(1)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     EmpresaId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -139,6 +107,46 @@ namespace AplicaçãoSupport.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.CreateTable(
+                name: "Atendimentos",
+                columns: table => new
+                {
+                    Atendimento_Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ProblemaApresentado = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ResolucaoDoProblema = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Data_Atendimento = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    Horario_Atendimento = table.Column<TimeOnly>(type: "time(6)", nullable: false),
+                    Horario_Finalizacao = table.Column<TimeOnly>(type: "time(6)", nullable: false),
+                    Data_Inclusao = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    AtendenteId = table.Column<int>(type: "int", nullable: false),
+                    ClienteId = table.Column<int>(type: "int", nullable: true),
+                    EmpresaId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Atendimentos", x => x.Atendimento_Id);
+                    table.ForeignKey(
+                        name: "FK_Atendimentos_Atendente_AtendenteId",
+                        column: x => x.AtendenteId,
+                        principalTable: "Atendente",
+                        principalColumn: "Atendente_Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Atendimentos_Clientes_ClienteId",
+                        column: x => x.ClienteId,
+                        principalTable: "Clientes",
+                        principalColumn: "ClienteId");
+                    table.ForeignKey(
+                        name: "FK_Atendimentos_Empresa_EmpresaId",
+                        column: x => x.EmpresaId,
+                        principalTable: "Empresa",
+                        principalColumn: "EmpresaId");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Agendamentos_AtendenteId",
                 table: "Agendamentos",
@@ -153,6 +161,11 @@ namespace AplicaçãoSupport.Migrations
                 name: "IX_Atendimentos_AtendenteId",
                 table: "Atendimentos",
                 column: "AtendenteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Atendimentos_ClienteId",
+                table: "Atendimentos",
+                column: "ClienteId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Atendimentos_EmpresaId",
@@ -175,10 +188,10 @@ namespace AplicaçãoSupport.Migrations
                 name: "Atendimentos");
 
             migrationBuilder.DropTable(
-                name: "Clientes");
+                name: "Atendente");
 
             migrationBuilder.DropTable(
-                name: "Atendente");
+                name: "Clientes");
 
             migrationBuilder.DropTable(
                 name: "Empresa");

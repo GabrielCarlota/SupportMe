@@ -8,6 +8,7 @@ import { EmpresaComponent } from './views/components/empresa/empresa/empresa.com
 import { AtendimentosComponent } from './views/components/atendimentos/atendimentos/atendimentos.component';
 import { RegisterComponent } from './views/components/register/register/register.component';
 import { NotFoundComponent } from './views/pages/not-found/not-found.component';
+import { Title } from '@angular/platform-browser';
 
 export const routes: Routes = [
   {
@@ -18,17 +19,20 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    data: {Title:'Login'}
   },
   {
     path: 'registro',
     component: RegisterComponent,
+    data: {Title:'Registro'}
   },
   {
     path:'teste',
-    component:TestesComponent 
+    component:TestesComponent
   },
   {
-    path:'404', component:NotFoundComponent
+    path:'404', component:NotFoundComponent,
+    data: {title:'Not Found'}
   },
   {
     path: '',

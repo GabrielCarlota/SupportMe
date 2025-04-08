@@ -1,5 +1,10 @@
 <p-card class="bg-black ">
   <div class="flex flex-col h-screen overflow-hidden">
+    <div class="flex text-center justify-center items-center">
+      <h1 class="text-2xl font-bold ">
+        CADASTRO DE EMPRESAS
+      </h1>
+    </div>
     <p-toast />
     <p-dialog header="Incluir" [modal]="true" [(visible)]="visivel">
       <form [formGroup]="empresaForm" (submit)="addEmpresa()">
@@ -93,7 +98,7 @@
             </td>
             <td>
               <div class="space-x-2 w-16">
-                <p-button (onClick)="(rowData.clienteId)" outlined="true" [raised]="true" severity="danger" icon="pi pi-user-minus" label="Delete"/>
+                <p-button (onClick)="deleteEmpresa(rowData.empresaId)" outlined="true" [raised]="true" severity="danger" icon="pi pi-user-minus" label="Delete"/>
                 <p-button (onClick)="editEmpresa(rowData)" outlined="true" [raised]="true" severity="info" icon="pi pi-user-edit" label="Editar"/>
               </div>
             </td>

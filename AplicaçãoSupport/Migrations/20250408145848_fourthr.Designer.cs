@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AplicaçãoSupport.Migrations
 {
     [DbContext(typeof(AplicaçãoSupportDbContext))]
-    [Migration("20250403145658_third")]
-    partial class third
+    [Migration("20250408145848_fourthr")]
+    partial class fourthr
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -96,8 +96,8 @@ namespace AplicaçãoSupport.Migrations
                     b.Property<int>("AtendenteId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Cliente_Atendido")
-                        .HasColumnType("longtext");
+                    b.Property<int?>("ClienteId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Data_Atendimento")
                         .HasColumnType("datetime(6)");
@@ -111,6 +111,9 @@ namespace AplicaçãoSupport.Migrations
                     b.Property<TimeOnly>("Horario_Atendimento")
                         .HasColumnType("time(6)");
 
+                    b.Property<TimeOnly>("Horario_Finalizacao")
+                        .HasColumnType("time(6)");
+
                     b.Property<string>("ProblemaApresentado")
                         .IsRequired()
                         .HasMaxLength(500)
@@ -122,6 +125,8 @@ namespace AplicaçãoSupport.Migrations
                     b.HasKey("Atendimento_Id");
 
                     b.HasIndex("AtendenteId");
+
+                    b.HasIndex("ClienteId");
 
                     b.HasIndex("EmpresaId");
 
@@ -199,13 +204,17 @@ namespace AplicaçãoSupport.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AplicaçãoSupport.Models.Empresa", "Empresa")
+                    b.HasOne("AplicaçãoSupport.Models.Clientes", "Cliente")
+                        .WithMany("Atendimentos")
+                        .HasForeignKey("ClienteId");
+
+                    b.HasOne("AplicaçãoSupport.Models.Empresa", null)
                         .WithMany("Atendimentos")
                         .HasForeignKey("EmpresaId");
 
                     b.Navigation("Atendente");
 
-                    b.Navigation("Empresa");
+                    b.Navigation("Cliente");
                 });
 
             modelBuilder.Entity("AplicaçãoSupport.Models.Clientes", b =>
@@ -227,6 +236,8 @@ namespace AplicaçãoSupport.Migrations
             modelBuilder.Entity("AplicaçãoSupport.Models.Clientes", b =>
                 {
                     b.Navigation("Agendamentos");
+
+                    b.Navigation("Atendimentos");
                 });
 
             modelBuilder.Entity("AplicaçãoSupport.Models.Empresa", b =>

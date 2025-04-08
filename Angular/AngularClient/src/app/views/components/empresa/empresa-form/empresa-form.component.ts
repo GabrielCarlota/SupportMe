@@ -39,7 +39,7 @@ interface Colunas {
     ReactiveFormsModule,
     Toast,
     Card,
-    FloatLabel
+    FloatLabel,
   ],
   templateUrl: './empresa-form.component.html',
   styleUrl: './empresa-form.component.css',
@@ -153,6 +153,29 @@ export class EmpresaFormComponent implements OnInit {
           severity: 'error',
           summary: 'Erro',
           detail: 'Erro ao carregar os clientes',
+          life: 2000,
+        });
+      },
+    });
+  }
+
+  deleteEmpresa(id: number) {
+    this.es.deleteEmpresa(id).subscribe({
+      next: (value) => {
+        this.getEmpresa()
+        this.ms.add({
+          severity: 'success',
+          summary: 'Sucesso',
+          detail: 'Clientes carregados com sucesso',
+          life: 2000,
+        });
+      },
+      error: (err) => {
+        console.log(err);
+        this.ms.add({
+          severity: 'error',
+          summary: 'Erro',
+          detail: err.error?.message || 'Erro ao carregar os clientes',
           life: 2000,
         });
       },

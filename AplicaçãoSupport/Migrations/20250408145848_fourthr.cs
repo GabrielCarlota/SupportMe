@@ -5,7 +5,7 @@
 namespace AplicaçãoSupport.Migrations
 {
     /// <inheritdoc />
-    public partial class time : Migration
+    public partial class fourthr : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
