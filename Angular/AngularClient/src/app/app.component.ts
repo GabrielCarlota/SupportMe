@@ -3,7 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import { Toast } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
-
+import { Card } from 'primeng/card';
+import { Panel } from 'primeng/panel';
 
 @Component({
   selector: 'app-root',

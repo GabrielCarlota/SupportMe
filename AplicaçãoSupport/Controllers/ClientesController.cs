@@ -131,7 +131,7 @@ namespace AplicaçãoSupport.Controllers
                 _context.Entry(clientes).State = EntityState.Modified; 
                 _context.SaveChanges();
 
-                return Ok($"O cliente {clientes.ClienteNome} foi alterado com sucesso");
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -160,8 +160,8 @@ namespace AplicaçãoSupport.Controllers
 
                 _context.Clientes.Remove(clientes);
                 _context.SaveChanges();
+                return Ok();
 
-                return Ok($"O cliente {clientes.ClienteNome} foi deletado com sucesso");
 
             }
             catch (Exception ex)

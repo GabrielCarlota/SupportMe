@@ -1,11 +1,16 @@
-<div class="flex flex-col">
-  <p-card class="" [style]="{ width: '360px' }">
+<div class="flex justify-center items-center h-screen w-screen">
+  <p-card
+    class=""
+    [style]="{ width: '360px' }"
+    styleClass="bg-white border border-gray-200 rounded-2xl shadow-xl"
+    >
     <div class="text-center mb-10 font-bold">
       <h1 class="text-2xl">Bem vindo!</h1>
       <p class="mt-2 text-xs">
         Ainda não tem uma conta?
         <a class="text-blue-400 cursor-pointer font-bold" (click)="toRegister()"
-          >Registre-se</a>
+          >Registre-se</a
+        >
       </p>
     </div>
     <form [formGroup]="loginForm" (ngSubmit)="loginClicked()">
@@ -43,7 +48,6 @@
         </p-iconfield>
 
         <p-button
-          
           type="submit"
           label="Login"
           class="mt-2"

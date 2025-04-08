@@ -78,12 +78,6 @@
           (onClick)="showDialogo()"
         />
         <p-button
-          outlined="true"
-          raised="true"
-          severity="danger"
-          label="Deletar"
-        />
-        <p-button
           raised="true"
           outlined="true"
           icon="pi pi-external-link"
@@ -95,6 +89,7 @@
       <p-table
         #dt
         id="table-data"
+        [pSelectableRowDblClick]="true"
         [resizableColumns]="true"
         columnResizeMode="expand"
         scrollable="false"
@@ -112,12 +107,21 @@
             <th pResizableColumn *ngFor="let col of columns">
               {{ col.cabecalho }}
             </th>
+            <th>
+              Ação
+            </th>
           </tr>
         </ng-template>
         <ng-template #body let-rowData let-columns="columns">
           <tr>
             <td *ngFor="let col of columns">
               {{ rowData[col.campo] }}
+            </td>
+            <td>
+              <div class="space-x-2 w-16">
+                <p-button (onClick)="deleteCliente(rowData.clienteId)" outlined="true" [raised]="true" severity="danger" icon="pi pi-user-minus" label="Delete"/>
+                <p-button (onClick)="editCliente(rowData)" outlined="true" [raised]="true" severity="info" icon="pi pi-user-edit" label="Editar"/>
+              </div>
             </td>
           </tr>
         </ng-template>

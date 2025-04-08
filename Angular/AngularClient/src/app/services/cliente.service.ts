@@ -15,7 +15,14 @@ export class ClienteService {
   getClientes=():Observable<Clientes[]>=>this.http.get<Clientes[]>(`${this.apiUrl}`);
 
   postCliente=(data:Clientes)=>{
-    console.log("Cliente data =", data);
     return this.http.post(`${this.apiUrl}`, data)
+  }
+
+  deleteCliente(id:number):Observable<any>{
+    return this.http.delete(`${this.apiUrl}/${id}`)
+  }
+
+  putCliente(id:number, cliente:Clientes):Observable<any>{
+    return this.http.put(`${this.apiUrl}/${id}`, cliente)
   }
 }

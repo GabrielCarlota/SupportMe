@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import * as XLSX from 'xlsx'
+import { Clientes } from './../../../../interfaces/cliente';
+import { Component, HostListener, OnInit } from '@angular/core';
+import * as XLSX from 'xlsx';
 import { TableModule } from 'primeng/table';
 import { Dialog } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
@@ -12,26 +13,21 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { ConfirmationService } from 'primeng/api';
 import { Card } from 'primeng/card';
 import { Toast } from 'primeng/toast';
-import { Clientes } from '../../../../interfaces/cliente';
 import { CommonModule } from '@angular/common';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 
-interface Colunas{
-  campo:string,
-  cabecalho:string
-}
-
-interface ExportData{
-  cabecalho:string,
-  dataKey:string
+interface Colunas {
+  campo: string;
+  cabecalho: string;
 }
 
 @Component({
   selector: 'app-cliente-table',
-  standalone:true,
+  standalone: true,
   imports: [
     TableModule,
     Dialog,
@@ -41,15 +37,13 @@ interface ExportData{
     CommonModule,
     ReactiveFormsModule,
     Toast,
-    Card
+    Card,
   ],
   templateUrl: './cliente-table.component.html',
   styleUrl: './cliente-table.component.css',
-  providers:[MessageService]
+  providers: [MessageService],
 })
-
 export class ClienteTableComponent implements OnInit {
-
   constructor(
     private cs: ClienteService,
     private fb: FormBuilder,
@@ -57,97 +51,180 @@ export class ClienteTableComponent implements OnInit {
     private route: Router
   ) {}
 
-  clientesList!: Clientes[]
+  clientesList!: Clientes[];
 
-  cols!: Colunas[]
+  cols!: Colunas[];
 
   visivel: boolean = false;
 
   clientesForm!: FormGroup;
 
-  exportData!: ExportData[];
+  editando: boolean = false;
+
+  idClienteEditando: number | null = null;
 
   showDialogo() {
     this.visivel = true;
   }
 
   addCliente() {
-    const novoCliente: Clientes = {
+    const cliente: Clientes = {
       clienteNome: this.clientesForm.value.clienteNome ?? '',
-      clienteTelefone: this.clientesForm.value.clienteTelefone?.toString() ?? '',
-      sintegra: this.clientesForm.value.sintegra??'',
-      empresaId: Number(this.clientesForm.value.empresaId ??0),
+      clienteTelefone:
+        this.clientesForm.value.clienteTelefone?.toString() ?? '',
+      sintegra: this.clientesForm.value.sintegra ?? '',
+      empresaId: Number(this.clientesForm.value.empresaId ?? 0),
     };
 
-    this.cs.postCliente(novoCliente).subscribe({
+    if (this.editando && this.idClienteEditando !== null) {
+      this.cs
+        .putCliente(this.idClienteEditando, {
+          clienteId: this.idClienteEditando,
+          ...this.clientesForm.value,
+        })
+        .subscribe({
+          next: (value) => {
+            this.getClientes();
+            this.resetarFormulario();
+            this.ms.add({
+              severity: 'success',
+              summary: 'Sucesso',
+              detail: 'Cliente alterado com sucesso',
+              life: 2500,
+            });
+          },
+          error: (err) => {
+            console.log(err);
+            this.ms.add({
+              severity: 'error',
+              summary: 'Erro',
+              detail: 'Ocorreu um erro ao alterar o cliente selecionado',
+              life: 2500,
+            });
+          },
+        });
+    } else {
+      this.cs.postCliente(cliente).subscribe({
+        next: (value) => {
+          this.ms.add({
+            severity: 'success',
+            summary: 'Sucesso',
+            detail: 'Cliente incluido com sucesso',
+            life: 5000,
+          });
+          this.getClientes();
+          this.clientesForm.reset();
+          this.visivel = false;
+        },
+        error: (err) => {
+          this.ms.add({
+            severity: 'error',
+            summary: 'Erro',
+            detail: err.error?.message || 'Erro ao incluir o atendente.',
+            life: 5000,
+          });
+          this.clientesForm.reset();
+        },
+      });
+    }
+  }
+
+  cancelarForm() {
+    this.clientesForm.reset();
+    this.visivel = false;
+  }
+
+  deleteCliente(id: number) {
+    this.cs.deleteCliente(id).subscribe({
+
       next: (value) => {
         this.ms.add({
-          severity:'success',
-          summary:"Sucesso",
-          detail:"Cliente incluido com sucesso",
-          life:5000
-        })
-        this.getClientes()
-        this.clientesForm.reset()
+          severity: 'info',
+          summary: 'Sucesso',
+          detail: 'Cliente Deletado com sucesso',
+          life: 2500,
+        });
+
+        this.getClientes();
       },
-      error:(err) => {
+      error: (err) => {
         this.ms.add({
-          severity:'error',
-          summary:"Erro",
-          detail: err.error?.message || "Erro ao incluir o atendente.",
-          life:5000
-        })
+          severity: 'error',
+          summary: 'Erro',
+          detail: err.error?.message || 'Não foi possivel realizar a exclusão',
+          life: 5000,
+        });
       },
     });
   }
 
-  cancelarForm(){
-    this.clientesForm.reset()
+  editCliente(cliente: Clientes) {
+    this.clientesForm.patchValue({
+      clienteNome: cliente.clienteNome,
+      clienteTelefone: cliente.clienteTelefone,
+      empresaId: cliente.empresaId,
+      sintegra: cliente.sintegra,
+    });
+
+    this.visivel = true;
+    this.editando = true;
+    this.idClienteEditando = cliente.clienteId!;
   }
 
-  getClientes(){
-    this.cs.getClientes().subscribe({next:(value)=> {
-      console.log(value);
-      this.clientesList = value;
-      this.ms.add({
-        severity:'success',
-        summary:"Sucesso",
-        detail:"Clientes carregados com sucesso",
-        life:5000
-      })
-    },
-  error:(err)=>{
-    console.log(err);
-    this.ms.add({
-      severity:'error',
-      summary:"Erro",
-      detail: err.error?.message || "Erro ao carregar os clientes",
-      life:5000
-    })
-  },})
+  resetarFormulario() {
+    this.clientesForm.reset();
+    this.visivel = false;
+    this.editando = false;
+    this.idClienteEditando = null;
   }
 
+  getClientes() {
+    this.cs.getClientes().subscribe({
+      next: (value) => {
+        this.clientesList = value;
+        this.ms.add({
+          severity: 'success',
+          summary: 'Sucesso',
+          detail: 'Clientes carregados com sucesso',
+          life: 5000,
+        });
+      },
+      error: (err) => {
+        this.ms.add({
+          severity: 'error',
+          summary: 'Erro',
+          detail: err.error?.message || 'Erro ao carregar os clientes',
+          life: 5000,
+        });
+      },
+    });
+  }
 
-  exportXlsx(){
-    const fileName = "Clientedata.xlsx"
+  exportXlsx() {
+    const fileName = 'Clientedata.xlsx';
 
-    let data = document.getElementById("table-data");
+    let data = document.getElementById('table-data');
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(data);
 
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb,ws,'Pagina 1');
+    XLSX.utils.book_append_sheet(wb, ws, 'Pagina 1');
 
-    XLSX.writeFile(wb,fileName)
+    XLSX.writeFile(wb, fileName);
+  }
+
+  @HostListener('window:keydown.control.a', ['$event'])
+  shortAdd(event: KeyboardEvent) {
+    event.preventDefault();
+    this.visivel = true;
   }
 
   ngOnInit(): void {
-
     this.cols = [
-      {cabecalho:'Id', campo:'clienteId'},
-      {cabecalho:'Nome', campo:'clienteNome'},
-      {cabecalho:'Telefone', campo:'clienteTelefone'},
-      {cabecalho:'Sintegra', campo:'sintegra'},
-      {cabecalho:'Empresa', campo:'empresaId'}
+      { cabecalho: 'Id', campo: 'clienteId' },
+      { cabecalho: 'Nome', campo: 'clienteNome' },
+      { cabecalho: 'Telefone', campo: 'clienteTelefone' },
+      { cabecalho: 'Sintegra', campo: 'sintegra' },
+      { cabecalho: 'Empresa', campo: 'empresaId' },
     ];
 
     this.getClientes();
@@ -155,7 +232,7 @@ export class ClienteTableComponent implements OnInit {
     this.clientesForm = this.fb.group({
       clienteNome: ['', Validators.required],
       clienteTelefone: ['', Validators.required],
-      sintegra:['', Validators.required],
+      sintegra: ['', Validators.required],
       empresaId: ['', Validators.required],
     });
   }
