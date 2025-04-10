@@ -26,7 +26,7 @@ namespace AplicaçãoSupport.Helpers
             byte[] salt = Convert.FromHexString(parts[1]);
 
             byte[] inputHash = Rfc2898DeriveBytes.Pbkdf2(password, salt, Iterations, algorithm, HashSize);
-
+            
             //return hash.SequenceEqual(inputHash);
             return CryptographicOperations.FixedTimeEquals(hash, inputHash);
         }

@@ -1,35 +1,47 @@
-<p-card class="bg-black ">
+<p-card class="bg-black">
   <div class="flex flex-col h-screen overflow-hidden">
-    <div class="flex text-center justify-center items-center">
-      <h1 class="text-2xl font-bold ">
-        LANÇAR ATENDIMENTOS
-      </h1>
-    </div>
+    <div class="flex text-center justify-center items-center"></div>
     <p-toast />
-    <p-dialog header="Incluir" [modal]="true" [(visible)]="visivel">
+    <p-dialog
+      header="Incluir"
+      [modal]="true"
+      [(visible)]="visivel"
+      [style]="{ width: '700px', height: '700px' }"
+    >
       <form [formGroup]="atendimentosForm" (submit)="addAtendimento()">
         <span class="p-text-secondary block mb-8"
           >Adicione um Atendimento.</span
         >
-        <div class="flex items-center mb-4 space-x-2">
 
-          <label for="" class="font-semibold w-24">Cliente: </label>
+        <div class="flex flex-wrap gap-4 mb-4">
+          <div class="flex flex-col flex-1 min-w-[240px]">
+            <label for="Empresa" class="font-semibold mb-1">Empresa:</label>
+            <p-select
+              [editable]="true"
+              formControlName=""
+              [options]=""
+              optionValue="clienteId"
+              optionLabel=""
+              placeholder=""
+              class="w-full"
+            >
+            </p-select>
+          </div>
+        </div>
+
+        <div class="flex">
+          <label for="problemaApresentado" class="font-semibold w-24"
+            >Problema:
+          </label>
           <p-floatlabel>
-          <label for="EmpresaLabel" class="font-semibold w-24">Id</label>
-            <input
-              formControlName="clienteId"
-              pInputText
-              type="text"
-              name="Nome"
-              id="Nome"
-              for="over_label"
-            />
-          </p-floatlabel>
-          <label for="problemaApresentado" class="font-semibold w-24">Problema: </label>
-          <p-floatlabel>
-          <label for="problemaApresentadoLabel" class="font-semibold w-24">Motivo</label>
+            <label for="problemaApresentadoLabel" class="font-semibold w-24"
+              >Motivo</label
+            >
             <textarea
-              rows="2" cols="2" pInputTextarea
+              rows="2"
+              cols="20"
+              class="h-full border"
+              pTextarea
               formControlName="problemaApresentado"
               type="text"
               name="Nome"
@@ -75,7 +87,7 @@
           icon="pi pi-external-link"
           label="Excel"
           (onClick)="exportXlsx()"
-          ></p-button>
+        ></p-button>
       </div>
 
       <p-table
@@ -99,9 +111,7 @@
             <th pResizableColumn *ngFor="let col of cols">
               {{ col.cabecalho }}
             </th>
-            <th>
-              Ação
-            </th>
+            <th>Ação</th>
           </tr>
         </ng-template>
         <ng-template #body let-rowData let-colums="colums">
@@ -111,8 +121,22 @@
             </td>
             <td>
               <div class="space-x-2 w-16">
-                <p-button (onClick)="(rowData.empresaId)" outlined="true" [raised]="true" severity="danger" icon="pi pi-user-minus" label="Delete"/>
-                <p-button (onClick)="(rowData)" outlined="true" [raised]="true" severity="info" icon="pi pi-user-edit" label="Editar"/>
+                <p-button
+                  (onClick)="(rowData.empresaId)"
+                  outlined="true"
+                  [raised]="true"
+                  severity="danger"
+                  icon="pi pi-user-minus"
+                  label="Delete"
+                />
+                <p-button
+                  (onClick)="(rowData)"
+                  outlined="true"
+                  [raised]="true"
+                  severity="info"
+                  icon="pi pi-user-edit"
+                  label="Editar"
+                />
               </div>
             </td>
           </tr>
@@ -120,5 +144,4 @@
       </p-table>
     </div>
   </div>
-
 </p-card>

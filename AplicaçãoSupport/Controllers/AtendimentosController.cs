@@ -3,7 +3,6 @@ using AplicaçãoSupport.Context;
 using AplicaçãoSupport.Models;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace AplicaçãoSupport.Controllers
 {
@@ -29,8 +28,29 @@ namespace AplicaçãoSupport.Controllers
             return Ok(await _context.Atendimentos.ToListAsync());
         }
 
+        [HttpGet("AtendimentosFullData")]
+        public async Task<ActionResult<IEnumerable<Atendimentos>>> GetAtendimentosMaisDados()
+        {
+            var atendimentos = _context.Atendimentos.Include(a => a.Cliente).Select(a => new {
 
-        [HttpGet("{id:int}", Name = "ObterAtendimento")]
+                AtendimentoId = a.AtendimentoId,
+                ProblemaApresentado = a.ProblemaApresentado,
+                ResolucaoDoProblema = a.ResolucaoDoProblema,
+                DataAtendimento = a.DataAtendimento,
+                HorarioAtendimento = a.HorarioAtendimento,
+                HorarioFinalizacao = a.HorarioFinalizacao,
+                DataInclusao = a.DataInclusao,
+                AtendenteId = a.AtendenteId,
+                AtendenteNome = a.Atendente.NomeAtendente,
+                ClienteId = a.ClienteId,
+                ClienteNome = a.Cliente.ClienteNome,
+            });
+
+            return Ok(await atendimentos.ToListAsync());
+        }
+
+
+        [HttpGet("{id:int}")]
         public ActionResult Get(int id)
         {
             var atendimentos = _context.Atendimentos.FirstOrDefault(a => a.AtendimentoId == id);

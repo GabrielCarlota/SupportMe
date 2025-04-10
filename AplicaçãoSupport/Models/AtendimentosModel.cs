@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
@@ -6,10 +7,11 @@ namespace AplicaçãoSupport.Models
 {
     public class Atendimentos
     {
+
         [Key, Required]
         public int AtendimentoId { get; set; }  
 
-        [Required, MaxLength(500)]
+        [Required(ErrorMessage ="Problema apresentado é obrigatorio"), MaxLength(500, ErrorMessage ="Limite de C")]
         public string? ProblemaApresentado { get; set; }
         public string? ResolucaoDoProblema { get; set; }
         [Required]
@@ -28,7 +30,6 @@ namespace AplicaçãoSupport.Models
         public int? ClienteId { get; set; }
         [JsonIgnore]
         public Clientes? Cliente { get; set; }
-
 
     }
 }

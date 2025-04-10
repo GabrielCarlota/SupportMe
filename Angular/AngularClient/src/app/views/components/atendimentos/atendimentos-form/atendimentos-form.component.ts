@@ -22,6 +22,9 @@ import { EmpresasService } from '../../../../services/empresas.service';
 import { FloatLabel } from 'primeng/floatlabel';
 import { AtendimentoService } from '../../../../services/atendimento.service';
 import { Atendimentos } from '../../../../interfaces/atendimentos';
+import { ClienteService } from '../../../../services/cliente.service';
+import { Clientes } from '../../../../interfaces/cliente';
+import { Select } from 'primeng/select';
 
 interface Colunas {
   campo: string;
@@ -41,6 +44,7 @@ interface Colunas {
     Toast,
     Card,
     FloatLabel,
+    Select,
   ],
   templateUrl: './atendimentos-form.component.html',
   styleUrl: './atendimentos-form.component.css',
@@ -48,12 +52,19 @@ interface Colunas {
 export class AtendimentosFormComponent implements OnInit {
   constructor(
     private as: AtendimentoService,
+    private cs: ClienteService,
     private fb: FormBuilder,
     private ms: MessageService,
     private route: Router
   ) {}
 
   atendimentosList!: Atendimentos[];
+
+  formGroup: FormGroup | undefined;
+
+  cliOptions: Clientes[] = [];
+
+  clientes!: Clientes[];
 
   cols!: Colunas[];
 
@@ -66,14 +77,36 @@ export class AtendimentosFormComponent implements OnInit {
   idEditando: number | null = null;
 
   ngOnInit(): void {
+
+    this.as
+
     this.cols = [
       { cabecalho: 'Id', campo: 'atendimentoId' },
+      { cabecalho: 'Empresa', campo: 'empresaId' },
+      { cabecalho: 'Atendente', campo: 'atendenteId' },
       { cabecalho: 'Cliente', campo: 'clienteId' },
-      { cabecalho: 'Telefone', campo: 'clienteTelefone' },
-      { cabecalho: 'Sintegra', campo: 'sintegra' },
-      { cabecalho: 'Empresa', campo: 'nomeEmpresa' },
+      { cabecalho: 'Problema', campo: 'problemaApresentado' },
+      { cabecalho: 'Resolução', campo: 'resolucaoDoProblema' },
+      { cabecalho: 'Realização', campo: 'dataAtendimento' },
+      { cabecalho: 'Inclusão', campo: 'dataInclusao' },
+      { cabecalho: 'Começou', campo: 'horarioAtendimento' },
+      { cabecalho: 'Terminou', campo: 'horarioFinalizacao' },
+      { cabecalho: 'Resolução', campo: 'resolucaoDoProblema' },
     ];
-    this.getAtendimentos()
+
+    this.clientes = [
+      {
+        clienteId: 1,
+        clienteNome: 'Exemplo',
+        sintegra: '',
+        empresaId: 0,
+        clienteTelefone: '',
+      },
+    ];
+
+    this.formGroup = new FormGroup({});
+
+    this.getAtendimentos();
     this.atendimentosForm = this.fb.group({
       problemaApresentado: ['', Validators.required],
       resolucaoDoProblema: ['', Validators.required],
@@ -98,6 +131,7 @@ export class AtendimentosFormComponent implements OnInit {
       },
     });
   }
+
   exportXlsx() {
     const fileName = 'AtendimentosData.xlsx';
 

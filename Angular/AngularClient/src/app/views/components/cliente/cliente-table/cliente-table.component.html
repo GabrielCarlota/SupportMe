@@ -1,55 +1,78 @@
-<p-card class="bg-black">
-  <div class="flex flex-col h-screen">
-    <div class="flex text-center justify-center items-center">
-      <h1 class="text-2xl font-bold ">
-        CADASTRO DE CLIENTES
-      </h1>
-    </div>
+<p-card class="bg-black overflow-hidden">
+  <div class="flex flex-col min-h-screen overflow-x-hidden">
+    <div class="flex text-center justify-center items-center"></div>
+
+    <!-- Formulario de inclusão de dados-->
+    <!-- Formulario de inclusão de dados-->
+    <!-- Formulario de inclusão de dados-->
+    <!-- Formulario de inclusão de dados-->
+    <!-- Formulario de inclusão de dados-->
+
     <p-toast />
     <p-dialog header="Incluir" [modal]="true" [(visible)]="visivel">
-      <form [formGroup]="clientesForm" (submit)="addCliente()">
+      <form
+        class="overflow-hidden"
+        [formGroup]="clientesForm"
+        (submit)="addCliente()"
+        [style]="{ width: '580px', height: '320px' }"
+      >
         <span class="p-text-secondary block mb-8"
           >Adicionar mais um cliente.</span
         >
-        <div class="flex items-center mb-4 space-x-2">
-          <label for="NomeCli" class="font-semibold w-24">Cliente: </label>
-          <input
-            formControlName="clienteNome"
-            pInputText
-            type="text"
-            name="NomeCli"
-            id="NomeCli"
-            placeholder="Nome"
-          />
-          <label for="NomeCli" class="font-semibold w-24">Telefone: </label>
-          <input
-            formControlName="clienteTelefone"
-            pInputText
-            type="number"
-            name="Telefone"
-            id="Telefone"
-            placeholder="(35)9xxxx-xxxx"
-          />
+
+        <div class="flex flex-wrap gap-4 mb-4">
+          <div class="flex flex-col flex-1 min-w-[240px]">
+            <label for="NomeCli" class="font-semibold mb-1">Cliente:</label>
+            <input
+              formControlName="clienteNome"
+              pInputText
+              type="text"
+              name="NomeCli"
+              id="NomeCli"
+              placeholder="Nome"
+              class="w-full"
+            />
+          </div>
+
+          <div class="flex flex-col flex-1 min-w-[240px]">
+            <label for="Telefone" class="font-semibold mb-1">Telefone:</label>
+            <input
+              formControlName="clienteTelefone"
+              pInputText
+              type="number"
+              name="Telefone"
+              id="Telefone"
+              placeholder="(35)9xxxx-xxxx"
+              class="w-full"
+            />
+          </div>
         </div>
-        <div class="flex items-center mb-4 space-x-2">
-          <label for="Empresa" class="font-semibold w-24">Empresa: </label>
-          <input
-            formControlName="empresaId"
-            pInputText
-            type="number"
-            name="Empresa"
-            id="Empresa"
-            placeholder="Id"
-          />
-          <label for="Sintegra" class="font-semibold w-24">Sintegra: </label>
-          <input
-            formControlName="sintegra"
-            pInputText
-            type="text"
-            name="Sintegra"
-            id="Sintegra"
-            placeholder="S/N"
-          />
+
+        <div class="flex flex-wrap gap-4 mb-4">
+          <div class="flex flex-col flex-1 min-w-[240px]">
+            <label for="Empresa" class="font-semibold mb-1">Empresa:</label>
+            <p-select
+              [editable]="true"
+              formControlName="empresaId"
+              [options]="empOptions"
+              optionValue="empresaId"
+              optionLabel="nomeEmpresa"
+              placeholder="Empresa"
+              class="w-full"
+            >
+            </p-select>
+          </div>
+
+          <div class="flex flex-col flex-1 min-w-[240px]">
+            <label for="Sintegra" class="font-semibold mb-1">Sintegra:</label>
+            <p-select
+              formControlName="sintegra"
+              [options]="dpOptions"
+              placeholder="S/N"
+              class="w-full"
+            >
+            </p-select>
+          </div>
         </div>
         <div class="mt-6 flex justify-center items-center h-16 w-full">
           <div class="space-x-10">
@@ -70,7 +93,14 @@
       </form>
     </p-dialog>
 
-    <div class="items-center justify-center h-screen w-8xl">
+    <!-- Tabela de dados-->
+    <!-- Tabela de dados-->
+    <!-- Tabela de dados-->
+    <!-- Tabela de dados-->
+    <!-- Tabela de dados-->
+    <!-- Tabela de dados-->
+
+    <div class="items-center justify-center w-full px-2 mt-4">
       <div
         class="h-16 w-screen flex justify-start items-start space-x-2 p-2 mb-2"
       >
@@ -88,15 +118,13 @@
           icon="pi pi-external-link"
           label="Excel"
           (onClick)="exportXlsx()"
-          ></p-button>
+        ></p-button>
       </div>
 
       <p-table
         #dt
         id="table-data"
-        [pSelectableRowDblClick]="true"
         [resizableColumns]="true"
-        columnResizeMode="expand"
         scrollable="false"
         stripedRows="true"
         showGridlines="true"
@@ -112,9 +140,7 @@
             <th pResizableColumn *ngFor="let col of columns">
               {{ col.cabecalho }}
             </th>
-            <th>
-              Ação
-            </th>
+            <th>Ação</th>
           </tr>
         </ng-template>
         <ng-template #body let-rowData let-columns="columns">
@@ -124,8 +150,22 @@
             </td>
             <td>
               <div class="space-x-2 w-16">
-                <p-button (onClick)="deleteCliente(rowData.clienteId)" outlined="true" [raised]="true" severity="danger" icon="pi pi-user-minus" label="Delete"/>
-                <p-button (onClick)="editCliente(rowData)" outlined="true" [raised]="true" severity="info" icon="pi pi-user-edit" label="Editar"/>
+                <p-button
+                  (onClick)="deleteCliente(rowData.clienteId)"
+                  outlined="true"
+                  [raised]="true"
+                  severity="danger"
+                  icon="pi pi-user-minus"
+                  label="Delete"
+                />
+                <p-button
+                  (onClick)="editCliente(rowData)"
+                  outlined="true"
+                  [raised]="true"
+                  severity="info"
+                  icon="pi pi-user-edit"
+                  label="Editar"
+                />
               </div>
             </td>
           </tr>
@@ -133,5 +173,4 @@
       </p-table>
     </div>
   </div>
-
 </p-card>

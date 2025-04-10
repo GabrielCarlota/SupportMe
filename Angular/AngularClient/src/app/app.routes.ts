@@ -49,14 +49,17 @@ export const routes: Routes = [
       {
         path: 'clientes',
         component: ClienteComponent,
+        data:{title: 'Cadastro de Clientes'}
       },
       {
         path: 'empresas',
         component: EmpresaComponent,
+        data:{title: 'Cadastro de Empresas'}
       },
       {
         path: 'atendimentos',
         component: AtendimentosComponent,
+        data:{title: 'Movimentação Atendimentos'}
       },
     ],
   },

@@ -1,20 +1,22 @@
-<p-card class="bg-black ">
-  <div class="flex flex-col h-screen overflow-hidden">
+<p-card class="bg-black">
+  <div class="flex flex-col min-h-screen overflow-x-hidden">
     <div class="flex text-center justify-center items-center">
-      <h1 class="text-2xl font-bold ">
-        CADASTRO DE EMPRESAS
-      </h1>
     </div>
+
+    <!-- Formulario de inclusão da empresa-->
+    <!-- Formulario de inclusão da empresa-->
+    <!-- Formulario de inclusão da empresa-->
+    <!-- Formulario de inclusão da empresa-->
+    <!-- Formulario de inclusão da empresa-->
+
     <p-toast />
     <p-dialog header="Incluir" [modal]="true" [(visible)]="visivel">
       <form [formGroup]="empresaForm" (submit)="addEmpresa()">
-        <span class="p-text-secondary block mb-8"
-          >Adicione uma Empresa.</span
-        >
+        <span class="p-text-secondary block mb-8">Adicione uma Empresa.</span>
         <div class="flex items-center mb-4 space-x-2">
           <label for="NomeEmp" class="font-semibold w-24">Nome: </label>
           <p-floatlabel>
-          <label for="EmpresaLabel" class="font-semibold w-24">Empresa</label>
+            <label for="EmpresaLabel" class="font-semibold w-24">Empresa</label>
             <input
               formControlName="nomeEmpresa"
               pInputText
@@ -25,6 +27,7 @@
             />
           </p-floatlabel>
         </div>
+
         <div class="mt-6 flex justify-center items-center h-16 w-full">
           <div class="space-x-10">
             <p-button
@@ -44,10 +47,15 @@
       </form>
     </p-dialog>
 
-    <div class="items-center justify-center h-screen w-8xl">
-      <div
-        class="h-16 w-screen flex justify-start items-start space-x-2 p-2 mb-2"
-      >
+    <!-- Tabela e botões do componente da empresa-->
+    <!-- Tabela e botões do componente da empresa-->
+    <!-- Tabela e botões do componente da empresa-->
+    <!-- Tabela e botões do componente da empresa-->
+    <!-- Tabela e botões do componente da empresa-->
+
+
+    <div class="items-center justify-center w-full px-2 mt-4">
+      <div class="h-16 w-full flex justify-start items-start space-x-2 p-2 mb-2">
         <p-toast />
         <p-button
           outlined="true"
@@ -62,16 +70,13 @@
           icon="pi pi-external-link"
           label="Excel"
           (onClick)="exportXlsx()"
-          ></p-button>
+        ></p-button>
       </div>
 
       <p-table
         #dt
         id="table-data"
-        [formGroup]="empresaForm"
         [resizableColumns]="true"
-        columnResizeMode="expand"
-        scrollable="false"
         stripedRows="true"
         showGridlines="true"
         paginator="true"
@@ -86,11 +91,10 @@
             <th pResizableColumn *ngFor="let col of cols">
               {{ col.cabecalho }}
             </th>
-            <th>
-              Ação
-            </th>
+            <th>Ação</th>
           </tr>
         </ng-template>
+
         <ng-template #body let-rowData let-colums="colums">
           <tr>
             <td *ngFor="let col of cols">
@@ -98,8 +102,22 @@
             </td>
             <td>
               <div class="space-x-2 w-16">
-                <p-button (onClick)="deleteEmpresa(rowData.empresaId)" outlined="true" [raised]="true" severity="danger" icon="pi pi-user-minus" label="Delete"/>
-                <p-button (onClick)="editEmpresa(rowData)" outlined="true" [raised]="true" severity="info" icon="pi pi-user-edit" label="Editar"/>
+                <p-button
+                  (onClick)="deleteEmpresa(rowData.empresaId)"
+                  outlined="true"
+                  [raised]="true"
+                  severity="danger"
+                  icon="pi pi-user-minus"
+                  label="Delete"
+                />
+                <p-button
+                  (onClick)="editEmpresa(rowData)"
+                  outlined="true"
+                  [raised]="true"
+                  severity="info"
+                  icon="pi pi-user-edit"
+                  label="Editar"
+                />
               </div>
             </td>
           </tr>
@@ -107,5 +125,4 @@
       </p-table>
     </div>
   </div>
-
 </p-card>

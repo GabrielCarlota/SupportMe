@@ -152,8 +152,8 @@ export class EmpresaFormComponent implements OnInit {
         this.ms.add({
           severity: 'error',
           summary: 'Erro',
-          detail: 'Erro ao carregar os clientes',
-          life: 2000,
+          detail: 'Erro ao carregar as Empresas',
+          sticky:true
         });
       },
     });

@@ -443,12 +443,49 @@
         }
       }
     },
+    "/api/Atendimentos/AtendimentosFullData": {
+      "get": {
+        "tags": [
+          "Atendimentos"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Atendimentos"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Atendimentos"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Atendimentos"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Atendimentos/{id}": {
       "get": {
         "tags": [
           "Atendimentos"
         ],
-        "operationId": "ObterAtendimento",
         "parameters": [
           {
             "name": "id",

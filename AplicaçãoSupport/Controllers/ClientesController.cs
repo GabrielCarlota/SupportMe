@@ -28,11 +28,11 @@ namespace AplicaçãoSupport.Controllers
                 .Include(c => c.Empresa)
                 .Select(c => new
                 {
-                    IdCliente   = c.ClienteId,
-                    NomeCliente = c.ClienteNome,
+                    ClienteId = c.ClienteId,
+                    ClienteNome = c.ClienteNome,
                     Sintegra = c.Sintegra,
                     ClienteTelefone = c.ClienteTelefone,
-                    IdEmpresa   = c.EmpresaId,
+                    EmpresaId = c.EmpresaId,
                     NomeEmpresa = c.Empresa.NomeEmpresa,
 
                 });

@@ -265,8 +265,7 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [],
-    "EndpointName": "ObterAtendimento"
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.AtendimentosController",
@@ -304,6 +303,26 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.AtendimentosController",
+    "Method": "GetAtendimentosMaisDados",
+    "RelativePath": "api/Atendimentos/AtendimentosFullData",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Aplica\u00E7\u00E3oSupport.Models.Atendimentos, Aplica\u00E7\u00E3oSupport, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "Aplica\u00E7\u00E3oSupport.Controllers.ClientesController",

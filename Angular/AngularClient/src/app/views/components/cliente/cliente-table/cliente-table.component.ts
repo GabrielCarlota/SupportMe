@@ -18,6 +18,10 @@ import { Toast } from 'primeng/toast';
 import { CommonModule } from '@angular/common';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { Select } from 'primeng/select';
+import { Empresa } from '../../../../interfaces/empresa';
+import { EmpresasService } from '../../../../services/empresas.service';
+import { PanelModule } from 'primeng/panel';
 
 interface Colunas {
   campo: string;
@@ -37,6 +41,8 @@ interface Colunas {
     ReactiveFormsModule,
     Toast,
     Card,
+    Select,
+    PanelModule,
   ],
   templateUrl: './cliente-table.component.html',
   styleUrl: './cliente-table.component.css',
@@ -44,11 +50,16 @@ interface Colunas {
 })
 export class ClienteTableComponent implements OnInit {
   constructor(
+    private es: EmpresasService,
     private cs: ClienteService,
     private fb: FormBuilder,
     private ms: MessageService,
     private route: Router
   ) {}
+
+  empOptions: Empresa[] = [];
+
+  dpOptions: string[] = ['S', 'N'];
 
   clientesList!: Clientes[];
 
@@ -135,7 +146,6 @@ export class ClienteTableComponent implements OnInit {
 
   deleteCliente(id: number) {
     this.cs.deleteCliente(id).subscribe({
-
       next: (value) => {
         this.ms.add({
           severity: 'info',
@@ -157,19 +167,6 @@ export class ClienteTableComponent implements OnInit {
     });
   }
 
-  editCliente(cliente: Clientes) {
-    this.clientesForm.patchValue({
-      clienteNome: cliente.clienteNome,
-      clienteTelefone: cliente.clienteTelefone,
-      empresaId: cliente.empresaId,
-      sintegra: cliente.sintegra,
-    });
-
-    this.visivel = true;
-    this.editando = true;
-    this.idClienteEditando = cliente.clienteId!;
-  }
-
   resetarFormulario() {
     this.clientesForm.reset();
     this.visivel = false;
@@ -189,7 +186,7 @@ export class ClienteTableComponent implements OnInit {
         });
       },
       error: (err) => {
-          this.ms.add({
+        this.ms.add({
           severity: 'error',
           summary: 'Erro',
           detail: err.error?.message || 'Erro ao carregar os clientes',
@@ -216,11 +213,22 @@ export class ClienteTableComponent implements OnInit {
     event.preventDefault();
     this.visivel = true;
   }
+  @HostListener('window:keydown.control.q', ['$event'])
+  shortClose(event: KeyboardEvent) {
+    event.preventDefault();
+    this.visivel = false;
+  }
 
   ngOnInit(): void {
+    this.es.getEmpresas().subscribe({
+      next: (empresa) => {
+        this.empOptions = empresa;
+      },
+    });
+
     this.cols = [
-      { cabecalho: 'Id', campo: 'idCliente' },
-      { cabecalho: 'Nome', campo: 'nomeCliente' },
+      { cabecalho: 'Id', campo: 'clienteId' },
+      { cabecalho: 'Nome', campo: 'clienteNome' },
       { cabecalho: 'Telefone', campo: 'clienteTelefone' },
       { cabecalho: 'Sintegra', campo: 'sintegra' },
       { cabecalho: 'Empresa', campo: 'nomeEmpresa' },
@@ -233,6 +241,20 @@ export class ClienteTableComponent implements OnInit {
       clienteTelefone: ['', Validators.required],
       sintegra: ['', Validators.required],
       empresaId: ['', Validators.required],
+      nomeEmpresa: ['', Validators.required],
     });
+  }
+
+  editCliente(cliente: Clientes) {
+    this.clientesForm.patchValue({
+      clienteNome: cliente.clienteNome,
+      clienteTelefone: cliente.clienteTelefone,
+      empresaId: cliente.empresaId,
+      sintegra: cliente.sintegra,
+    });
+
+    this.visivel = true;
+    this.editando = true;
+    this.idClienteEditando = cliente.clienteId!;
   }
 }
