@@ -102,12 +102,6 @@ namespace AplicaçãoSupport.Migrations
                     b.Property<DateTime>("DataInclusao")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<TimeOnly>("HorarioAtendimento")
-                        .HasColumnType("time(6)");
-
-                    b.Property<TimeOnly>("HorarioFinalizacao")
-                        .HasColumnType("time(6)");
-
                     b.Property<string>("ProblemaApresentado")
                         .IsRequired()
                         .HasMaxLength(500)

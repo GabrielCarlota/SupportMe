@@ -17,10 +17,6 @@ namespace AplicaçãoSupport.Models
         [Required]
         public DateTime DataAtendimento { get; set; }
         [Required]
-        public TimeOnly HorarioAtendimento { get; set; }
-        [Required]
-        public TimeOnly HorarioFinalizacao { get; set; }
-        [Required]
         public DateTime DataInclusao { get; set; }
 
         public int AtendenteId { get; set; }

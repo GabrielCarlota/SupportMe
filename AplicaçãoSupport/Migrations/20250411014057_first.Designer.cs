@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AplicaçãoSupport.Migrations
 {
     [DbContext(typeof(AplicaçãoSupportDbContext))]
-    [Migration("20250408172659_fisrt")]
-    partial class fisrt
+    [Migration("20250411014057_first")]
+    partial class first
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -104,12 +104,6 @@ namespace AplicaçãoSupport.Migrations
 
                     b.Property<DateTime>("DataInclusao")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<TimeOnly>("HorarioAtendimento")
-                        .HasColumnType("time(6)");
-
-                    b.Property<TimeOnly>("HorarioFinalizacao")
-                        .HasColumnType("time(6)");
 
                     b.Property<string>("ProblemaApresentado")
                         .IsRequired()

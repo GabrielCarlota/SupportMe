@@ -32,18 +32,16 @@ namespace AplicaçãoSupport.Controllers
         public async Task<ActionResult<IEnumerable<Atendimentos>>> GetAtendimentosMaisDados()
         {
             var atendimentos = _context.Atendimentos.Include(a => a.Cliente).Select(a => new {
-
                 AtendimentoId = a.AtendimentoId,
                 ProblemaApresentado = a.ProblemaApresentado,
                 ResolucaoDoProblema = a.ResolucaoDoProblema,
                 DataAtendimento = a.DataAtendimento,
-                HorarioAtendimento = a.HorarioAtendimento,
-                HorarioFinalizacao = a.HorarioFinalizacao,
                 DataInclusao = a.DataInclusao,
                 AtendenteId = a.AtendenteId,
                 AtendenteNome = a.Atendente.NomeAtendente,
                 ClienteId = a.ClienteId,
                 ClienteNome = a.Cliente.ClienteNome,
+                ClienteEmpresa = a.Cliente.Empresa.NomeEmpresa
             });
 
             return Ok(await atendimentos.ToListAsync());

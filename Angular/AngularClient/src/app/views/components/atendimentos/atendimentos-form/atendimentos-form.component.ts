@@ -25,6 +25,9 @@ import { Atendimentos } from '../../../../interfaces/atendimentos';
 import { ClienteService } from '../../../../services/cliente.service';
 import { Clientes } from '../../../../interfaces/cliente';
 import { Select } from 'primeng/select';
+import { TextareaModule } from 'primeng/textarea';
+import { DatePicker } from 'primeng/datepicker';
+import { CalendarModule } from 'primeng/calendar'
 
 interface Colunas {
   campo: string;
@@ -45,6 +48,9 @@ interface Colunas {
     Card,
     FloatLabel,
     Select,
+    TextareaModule,
+    DatePicker,
+    CalendarModule
   ],
   templateUrl: './atendimentos-form.component.html',
   styleUrl: './atendimentos-form.component.css',
@@ -62,7 +68,7 @@ export class AtendimentosFormComponent implements OnInit {
 
   formGroup: FormGroup | undefined;
 
-  cliOptions: Clientes[] = [];
+  attClientesOptions: Clientes[] = [];
 
   clientes!: Clientes[];
 
@@ -77,8 +83,14 @@ export class AtendimentosFormComponent implements OnInit {
   idEditando: number | null = null;
 
   ngOnInit(): void {
-
-    this.as
+    this.cs.getClientes().subscribe({
+      next: (value) => {
+        this.attClientesOptions = value;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
 
     this.cols = [
       { cabecalho: 'Id', campo: 'atendimentoId' },
@@ -89,19 +101,7 @@ export class AtendimentosFormComponent implements OnInit {
       { cabecalho: 'Resolução', campo: 'resolucaoDoProblema' },
       { cabecalho: 'Realização', campo: 'dataAtendimento' },
       { cabecalho: 'Inclusão', campo: 'dataInclusao' },
-      { cabecalho: 'Começou', campo: 'horarioAtendimento' },
-      { cabecalho: 'Terminou', campo: 'horarioFinalizacao' },
       { cabecalho: 'Resolução', campo: 'resolucaoDoProblema' },
-    ];
-
-    this.clientes = [
-      {
-        clienteId: 1,
-        clienteNome: 'Exemplo',
-        sintegra: '',
-        empresaId: 0,
-        clienteTelefone: '',
-      },
     ];
 
     this.formGroup = new FormGroup({});
@@ -149,6 +149,14 @@ export class AtendimentosFormComponent implements OnInit {
     event.preventDefault();
     this.visivel = true;
   }
+  @HostListener('window:keydown.control.q', ['$event'])
+  shortClose(event: KeyboardEvent) {
+    event.preventDefault();
+    this.visivel = false;
+  }
+
+
+
   cancelarForm() {
     this.atendimentosForm.reset();
     this.visivel = false;

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AplicaçãoSupport.Migrations
 {
     /// <inheritdoc />
-    public partial class fisrt : Migration
+    public partial class first : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -118,8 +118,6 @@ namespace AplicaçãoSupport.Migrations
                     ResolucaoDoProblema = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DataAtendimento = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    HorarioAtendimento = table.Column<TimeOnly>(type: "time(6)", nullable: false),
-                    HorarioFinalizacao = table.Column<TimeOnly>(type: "time(6)", nullable: false),
                     DataInclusao = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     AtendenteId = table.Column<int>(type: "int", nullable: false),
                     ClienteId = table.Column<int>(type: "int", nullable: true)

@@ -12,7 +12,7 @@ export class AtendimentoService {
   constructor(private http: HttpClient) {}
 
   getAtendimentos = (): Observable<Atendimentos[]> =>
-    this.http.get<Atendimentos[]>(`${this.apiUrl}`);
+    this.http.get<Atendimentos[]>(`${this.apiUrl}/AtendimentosFullData`);
 
     postAtendimentos=(data:Atendimentos)=>{
       return this.http.post(`${this.apiUrl}`, data)

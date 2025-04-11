@@ -6,51 +6,67 @@
       header="Incluir"
       [modal]="true"
       [(visible)]="visivel"
-      [style]="{ width: '700px', height: '700px' }"
+      [style]="{ width: '700px', height: '600px' }"
     >
       <form [formGroup]="atendimentosForm" (submit)="addAtendimento()">
         <span class="p-text-secondary block mb-8"
           >Adicione um Atendimento.</span
         >
 
-        <div class="flex flex-wrap gap-4 mb-4">
-          <div class="flex flex-col flex-1 min-w-[240px]">
-            <label for="Empresa" class="font-semibold mb-1">Empresa:</label>
-            <p-select
-              [editable]="true"
-              formControlName=""
-              [options]=""
-              optionValue="clienteId"
-              optionLabel=""
-              placeholder=""
-              class="w-full"
-            >
-            </p-select>
+        <div class="flex flex-wrap gap-4 mb-8">
+          <div class="flex flex-1 min-w-[240px] gap-4">
+            <p-floatlabel class="flex-1">
+              <p-select
+                [editable]="true"
+                formControlName="clienteId"
+                [options]="attClientesOptions"
+                optionValue="clienteId"
+                optionLabel="clienteNome"
+                placeholder="Cliente"
+                class="w-full"
+              >
+              </p-select>
+              <label for="clientes">Cliente:</label>
+            </p-floatlabel>
+
+            <p-floatlabel class="flex-1">
+              <p-datepicker [showTime]="true" formControlName="dataAtendimento" [fluid]="true" />
+              <label for="clientes">Data do atendimento</label>
+            </p-floatlabel>
           </div>
         </div>
 
-        <div class="flex">
-          <label for="problemaApresentado" class="font-semibold w-24"
-            >Problema:
-          </label>
-          <p-floatlabel>
-            <label for="problemaApresentadoLabel" class="font-semibold w-24"
-              >Motivo</label
-            >
-            <textarea
-              rows="2"
-              cols="20"
-              class="h-full border"
-              pTextarea
-              formControlName="problemaApresentado"
-              type="text"
-              name="Nome"
-              id="Nome"
-              for="over_label"
-            ></textarea>
-          </p-floatlabel>
+        <div class="flex flex-wrap gap-4 mb-4">
+          <div class="flex flex-1 min-w-[240px] gap-4">
+            <p-floatlabel class="flex-1">
+              <textarea
+                pTextarea
+                id="problemaApresentado"
+                formControlName="problemaApresentado"
+                rows="5"
+                cols="30"
+                style="resize: none"
+                class="w-full"
+              ></textarea>
+              <label for="problemaApresentado">Problema</label>
+            </p-floatlabel>
+
+            <p-floatlabel class="flex-1">
+              <textarea
+                pTextarea
+                id="resolucaoDoProblema"
+                formControlName="resolucaoDoProblema"
+                rows="5"
+                cols="30"
+                style="resize: none"
+                class="w-full"
+              ></textarea>
+              <label for="resolucaoDoProblema">Resolução</label>
+            </p-floatlabel>
+          </div>
         </div>
-        <div class="mt-6 flex justify-center items-center h-16 w-full">
+
+        <div class="mt-auto flex justify-center items-center h-16 w-full">
           <div class="space-x-10">
             <p-button
               type="submit"
@@ -69,7 +85,7 @@
       </form>
     </p-dialog>
 
-    <div class="items-center justify-center h-screen w-8xl">
+    <div class="items-center justify-center w-full px-2 mt-4">
       <div
         class="h-16 w-screen flex justify-start items-start space-x-2 p-2 mb-2"
       >
