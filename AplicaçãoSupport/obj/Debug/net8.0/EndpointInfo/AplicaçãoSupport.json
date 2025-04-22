@@ -1096,8 +1096,6 @@
           "atendimentoId",
           "dataAtendimento",
           "dataInclusao",
-          "horarioAtendimento",
-          "horarioFinalizacao",
           "problemaApresentado"
         ],
         "type": "object",
@@ -1118,14 +1116,6 @@
           "dataAtendimento": {
             "type": "string",
             "format": "date-time"
-          },
-          "horarioAtendimento": {
-            "type": "string",
-            "format": "time"
-          },
-          "horarioFinalizacao": {
-            "type": "string",
-            "format": "time"
           },
           "dataInclusao": {
             "type": "string",

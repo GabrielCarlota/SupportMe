@@ -9,6 +9,7 @@ import { AtendimentosComponent } from './views/components/atendimentos/atendimen
 import { RegisterComponent } from './views/components/register/register/register.component';
 import { NotFoundComponent } from './views/pages/not-found/not-found.component';
 import { Title } from '@angular/platform-browser';
+import { AgendamentosComponent } from './views/components/agendamentos/agendamentos.component';
 
 export const routes: Routes = [
   {
@@ -41,6 +42,7 @@ export const routes: Routes = [
       {
         path: 'homepage',
         component: HomepageComponent,
+        data:{title: 'Home page'}
       },
       {
         path: 'testes',
@@ -60,6 +62,11 @@ export const routes: Routes = [
         path: 'atendimentos',
         component: AtendimentosComponent,
         data:{title: 'Movimentação Atendimentos'}
+      },
+      {
+        path: 'agendamentos',
+        component: AgendamentosComponent,
+        data:{title: 'Agendamentos'}
       },
     ],
   },
