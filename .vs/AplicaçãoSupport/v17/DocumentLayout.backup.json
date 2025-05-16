@@ -1,12 +1,53 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\gabri\\Documents\\GitHub\\Projetos\\SupportMe\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\GabrielNote\\Documents\\GitHub\\SupportMe\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4820FBDF-215A-412E-AF49-99133D4A62DF}|Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj|c:\\users\\gabrielnote\\documents\\github\\supportme\\aplica\u00E7\u00E3osupport\\controllers\\empresacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4820FBDF-215A-412E-AF49-99133D4A62DF}|Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj|solutionrelative:aplica\u00E7\u00E3osupport\\controllers\\empresacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4820FBDF-215A-412E-AF49-99133D4A62DF}|Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj|c:\\users\\gabrielnote\\documents\\github\\supportme\\aplica\u00E7\u00E3osupport\\controllers\\atendentecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4820FBDF-215A-412E-AF49-99133D4A62DF}|Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj|solutionrelative:aplica\u00E7\u00E3osupport\\controllers\\atendentecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EmpresaController.cs",
+              "DocumentMoniker": "C:\\Users\\GabrielNote\\Documents\\GitHub\\SupportMe\\Aplica\u00E7\u00E3oSupport\\Controllers\\EmpresaController.cs",
+              "RelativeDocumentMoniker": "Aplica\u00E7\u00E3oSupport\\Controllers\\EmpresaController.cs",
+              "ToolTip": "C:\\Users\\GabrielNote\\Documents\\GitHub\\SupportMe\\Aplica\u00E7\u00E3oSupport\\Controllers\\EmpresaController.cs",
+              "RelativeToolTip": "Aplica\u00E7\u00E3oSupport\\Controllers\\EmpresaController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T00:55:46.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AtendenteController.cs",
+              "DocumentMoniker": "C:\\Users\\GabrielNote\\Documents\\GitHub\\SupportMe\\Aplica\u00E7\u00E3oSupport\\Controllers\\AtendenteController.cs",
+              "RelativeDocumentMoniker": "Aplica\u00E7\u00E3oSupport\\Controllers\\AtendenteController.cs",
+              "ToolTip": "C:\\Users\\GabrielNote\\Documents\\GitHub\\SupportMe\\Aplica\u00E7\u00E3oSupport\\Controllers\\AtendenteController.cs",
+              "RelativeToolTip": "Aplica\u00E7\u00E3oSupport\\Controllers\\AtendenteController.cs",
+              "ViewState": "AgIAAJkAAAAAAAAAAADwv7MAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-09T02:53:33.525Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -784,3 +784,4 @@ C:\Users\gabri\Documents\GitHub\Projetos\SupportMe\AplicaçãoSupport\obj\Debug\
 C:\Users\gabri\Documents\GitHub\Projetos\SupportMe\AplicaçãoSupport\obj\Debug\net8.0\AplicaçãoSupport.pdb
 C:\Users\gabri\Documents\GitHub\Projetos\SupportMe\AplicaçãoSupport\obj\Debug\net8.0\AplicaçãoSupport.genruntimeconfig.cache
 C:\Users\gabri\Documents\GitHub\Projetos\SupportMe\AplicaçãoSupport\obj\Debug\net8.0\ref\AplicaçãoSupport.dll
+C:\Users\GabrielNote\Documents\GitHub\SupportMe\AplicaçãoSupport\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
