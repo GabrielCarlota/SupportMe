@@ -1,14 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\GabrielNote\\Documents\\GitHub\\SupportMe\\",
+  "WorkspaceRootPath": "D:\\GitHub\\Projetos\\SupportMe\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4820FBDF-215A-412E-AF49-99133D4A62DF}|Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj|c:\\users\\gabrielnote\\documents\\github\\supportme\\aplica\u00E7\u00E3osupport\\controllers\\empresacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4820FBDF-215A-412E-AF49-99133D4A62DF}|Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj|solutionrelative:aplica\u00E7\u00E3osupport\\controllers\\empresacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4820FBDF-215A-412E-AF49-99133D4A62DF}|Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj|d:\\github\\projetos\\supportme\\aplica\u00E7\u00E3osupport\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4820FBDF-215A-412E-AF49-99133D4A62DF}|Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj|solutionrelative:aplica\u00E7\u00E3osupport\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4820FBDF-215A-412E-AF49-99133D4A62DF}|Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj|c:\\users\\gabrielnote\\documents\\github\\supportme\\aplica\u00E7\u00E3osupport\\controllers\\atendentecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4820FBDF-215A-412E-AF49-99133D4A62DF}|Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj|solutionrelative:aplica\u00E7\u00E3osupport\\controllers\\atendentecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4820FBDF-215A-412E-AF49-99133D4A62DF}|Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj|d:\\github\\projetos\\supportme\\aplica\u00E7\u00E3osupport\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4820FBDF-215A-412E-AF49-99133D4A62DF}|Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj|solutionrelative:aplica\u00E7\u00E3osupport\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4820FBDF-215A-412E-AF49-99133D4A62DF}|Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj|d:\\github\\projetos\\supportme\\aplica\u00E7\u00E3osupport\\aplica\u00E7\u00E3osupport.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{4820FBDF-215A-412E-AF49-99133D4A62DF}|Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj|solutionrelative:aplica\u00E7\u00E3osupport\\aplica\u00E7\u00E3osupport.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +22,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Aplica\u00E7\u00E3oSupport",
+              "DocumentMoniker": "D:\\GitHub\\Projetos\\SupportMe\\Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj",
+              "RelativeDocumentMoniker": "Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj",
+              "ToolTip": "D:\\GitHub\\Projetos\\SupportMe\\Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj",
+              "RelativeToolTip": "Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-18T20:48:39.885Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "EmpresaController.cs",
-              "DocumentMoniker": "C:\\Users\\GabrielNote\\Documents\\GitHub\\SupportMe\\Aplica\u00E7\u00E3oSupport\\Controllers\\EmpresaController.cs",
-              "RelativeDocumentMoniker": "Aplica\u00E7\u00E3oSupport\\Controllers\\EmpresaController.cs",
-              "ToolTip": "C:\\Users\\GabrielNote\\Documents\\GitHub\\SupportMe\\Aplica\u00E7\u00E3oSupport\\Controllers\\EmpresaController.cs",
-              "RelativeToolTip": "Aplica\u00E7\u00E3oSupport\\Controllers\\EmpresaController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T00:55:46.376Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\GitHub\\Projetos\\SupportMe\\Aplica\u00E7\u00E3oSupport\\appsettings.json",
+              "RelativeDocumentMoniker": "Aplica\u00E7\u00E3oSupport\\appsettings.json",
+              "ToolTip": "D:\\GitHub\\Projetos\\SupportMe\\Aplica\u00E7\u00E3oSupport\\appsettings.json",
+              "RelativeToolTip": "Aplica\u00E7\u00E3oSupport\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-18T20:34:50.194Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AtendenteController.cs",
-              "DocumentMoniker": "C:\\Users\\GabrielNote\\Documents\\GitHub\\SupportMe\\Aplica\u00E7\u00E3oSupport\\Controllers\\AtendenteController.cs",
-              "RelativeDocumentMoniker": "Aplica\u00E7\u00E3oSupport\\Controllers\\AtendenteController.cs",
-              "ToolTip": "C:\\Users\\GabrielNote\\Documents\\GitHub\\SupportMe\\Aplica\u00E7\u00E3oSupport\\Controllers\\AtendenteController.cs",
-              "RelativeToolTip": "Aplica\u00E7\u00E3oSupport\\Controllers\\AtendenteController.cs",
-              "ViewState": "AgIAAJkAAAAAAAAAAADwv7MAAAAAAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\GitHub\\Projetos\\SupportMe\\Aplica\u00E7\u00E3oSupport\\Program.cs",
+              "RelativeDocumentMoniker": "Aplica\u00E7\u00E3oSupport\\Program.cs",
+              "ToolTip": "D:\\GitHub\\Projetos\\SupportMe\\Aplica\u00E7\u00E3oSupport\\Program.cs",
+              "RelativeToolTip": "Aplica\u00E7\u00E3oSupport\\Program.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAawBUAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T02:53:33.525Z"
+              "WhenOpened": "2025-05-18T20:34:48.615Z",
+              "EditorCaption": ""
             }
           ]
         }

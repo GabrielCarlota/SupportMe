@@ -21,10 +21,10 @@ namespace AplicaçãoSupport
             builder.Services.AddSwaggerGen();
                 
 
-            string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
+            string ConnString = builder.Configuration.GetConnectionString("SampleConnPsql");
 
-            builder.Services.AddDbContext<AplicaçãoSupportDbContext>(options =>
-            options.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection)));
+            IServiceCollection serviceCollection = builder.Services.AddEntityFrameworkNpgsql().AddDbContext<AplicaçãoSupportDbContext>(options =>
+            options.UseNpgsql(ConnString));
 
             builder.Services.AddCors(options =>
             {

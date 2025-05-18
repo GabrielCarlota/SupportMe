@@ -1,12 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "IkUfD9fRItHWY3YSMXeYsFQ+Po2o3A3/XgPWIa2nFhU=",
-  "Source": "AplicaçãoSupport",
-  "BasePath": "_content/AplicaçãoSupport",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
-}
+{"Version":1,"Hash":"IkUfD9fRItHWY3YSMXeYsFQ+Po2o3A3/XgPWIa2nFhU=","Source":"AplicaçãoSupport","BasePath":"_content/AplicaçãoSupport","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

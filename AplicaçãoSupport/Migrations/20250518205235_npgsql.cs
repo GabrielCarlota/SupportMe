@@ -1,65 +1,54 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace AplicaçãoSupport.Migrations
 {
     /// <inheritdoc />
-    public partial class first : Migration
+    public partial class npgsql : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterDatabase()
-                .Annotation("MySql:CharSet", "utf8mb4");
-
             migrationBuilder.CreateTable(
                 name: "Atendente",
                 columns: table => new
                 {
-                    AtendenteId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    NomeAtendente = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Senha = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    AtendenteId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NomeAtendente = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Senha = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Atendente", x => x.AtendenteId);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "Empresa",
                 columns: table => new
                 {
-                    EmpresaId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    NomeEmpresa = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    EmpresaId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NomeEmpresa = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Empresa", x => x.EmpresaId);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "Clientes",
                 columns: table => new
                 {
-                    ClienteId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ClienteNome = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    ClienteTelefone = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Sintegra = table.Column<string>(type: "varchar(1)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    EmpresaId = table.Column<int>(type: "int", nullable: false)
+                    ClienteId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ClienteNome = table.Column<string>(type: "text", nullable: true),
+                    ClienteTelefone = table.Column<string>(type: "text", nullable: true),
+                    Sintegra = table.Column<char>(type: "character(1)", nullable: false),
+                    EmpresaId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,24 +59,21 @@ namespace AplicaçãoSupport.Migrations
                         principalTable: "Empresa",
                         principalColumn: "EmpresaId",
                         onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "Agendamentos",
                 columns: table => new
                 {
-                    AgendamentoId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    AtendenteId = table.Column<int>(type: "int", nullable: false),
-                    ClienteId = table.Column<int>(type: "int", nullable: false),
-                    DataDoAgendamento = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    DataDaRealizacao = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    MotivoAgendamento = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Realizado = table.Column<string>(type: "varchar(1)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    DataInclusao = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    AgendamentoId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    AtendenteId = table.Column<int>(type: "integer", nullable: false),
+                    ClienteId = table.Column<int>(type: "integer", nullable: false),
+                    DataDoAgendamento = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    DataDaRealizacao = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    MotivoAgendamento = table.Column<string>(type: "text", nullable: true),
+                    Realizado = table.Column<char>(type: "character(1)", nullable: false),
+                    DataInclusao = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -104,23 +90,20 @@ namespace AplicaçãoSupport.Migrations
                         principalTable: "Clientes",
                         principalColumn: "ClienteId",
                         onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "Atendimentos",
                 columns: table => new
                 {
-                    AtendimentoId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ProblemaApresentado = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    ResolucaoDoProblema = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    DataAtendimento = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    DataInclusao = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    AtendenteId = table.Column<int>(type: "int", nullable: false),
-                    ClienteId = table.Column<int>(type: "int", nullable: true)
+                    AtendimentoId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ProblemaApresentado = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
+                    ResolucaoDoProblema = table.Column<string>(type: "text", nullable: true),
+                    DataAtendimento = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    DataInclusao = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    AtendenteId = table.Column<int>(type: "integer", nullable: false),
+                    ClienteId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -136,8 +119,7 @@ namespace AplicaçãoSupport.Migrations
                         column: x => x.ClienteId,
                         principalTable: "Clientes",
                         principalColumn: "ClienteId");
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Agendamentos_AtendenteId",

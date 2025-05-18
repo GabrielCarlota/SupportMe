@@ -3,8 +3,8 @@ using System;
 using AplicaçãoSupport.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -18,39 +18,38 @@ namespace AplicaçãoSupport.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "8.0.2")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("AplicaçãoSupport.Models.AgendamentosModels.Agendamentos", b =>
                 {
                     b.Property<int>("AgendamentoId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("AgendamentoId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("AgendamentoId"));
 
                     b.Property<int>("AtendenteId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("ClienteId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<DateTime?>("DataDaRealizacao")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime?>("DataDoAgendamento")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("DataInclusao")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("MotivoAgendamento")
-                        .HasColumnType("longtext");
+                        .HasColumnType("text");
 
-                    b.Property<string>("Realizado")
-                        .IsRequired()
-                        .HasColumnType("varchar(1)");
+                    b.Property<char>("Realizado")
+                        .HasColumnType("character(1)");
 
                     b.HasKey("AgendamentoId");
 
@@ -65,17 +64,17 @@ namespace AplicaçãoSupport.Migrations
                 {
                     b.Property<int>("AtendenteId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("AtendenteId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("AtendenteId"));
 
                     b.Property<string>("NomeAtendente")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("Senha")
-                        .HasColumnType("longtext");
+                        .HasColumnType("text");
 
                     b.HasKey("AtendenteId");
 
@@ -86,29 +85,29 @@ namespace AplicaçãoSupport.Migrations
                 {
                     b.Property<int>("AtendimentoId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("AtendimentoId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("AtendimentoId"));
 
                     b.Property<int>("AtendenteId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int?>("ClienteId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("DataAtendimento")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("DataInclusao")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("ProblemaApresentado")
                         .IsRequired()
                         .HasMaxLength(500)
-                        .HasColumnType("varchar(500)");
+                        .HasColumnType("character varying(500)");
 
                     b.Property<string>("ResolucaoDoProblema")
-                        .HasColumnType("longtext");
+                        .HasColumnType("text");
 
                     b.HasKey("AtendimentoId");
 
@@ -123,22 +122,21 @@ namespace AplicaçãoSupport.Migrations
                 {
                     b.Property<int>("ClienteId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ClienteId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ClienteId"));
 
                     b.Property<string>("ClienteNome")
-                        .HasColumnType("longtext");
+                        .HasColumnType("text");
 
                     b.Property<string>("ClienteTelefone")
-                        .HasColumnType("longtext");
+                        .HasColumnType("text");
 
                     b.Property<int>("EmpresaId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    b.Property<string>("Sintegra")
-                        .IsRequired()
-                        .HasColumnType("varchar(1)");
+                    b.Property<char>("Sintegra")
+                        .HasColumnType("character(1)");
 
                     b.HasKey("ClienteId");
 
@@ -151,12 +149,12 @@ namespace AplicaçãoSupport.Migrations
                 {
                     b.Property<int>("EmpresaId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("EmpresaId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("EmpresaId"));
 
                     b.Property<string>("NomeEmpresa")
-                        .HasColumnType("longtext");
+                        .HasColumnType("text");
 
                     b.HasKey("EmpresaId");
 
