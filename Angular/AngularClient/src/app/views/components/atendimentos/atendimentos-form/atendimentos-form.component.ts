@@ -64,6 +64,8 @@ export class AtendimentosFormComponent implements OnInit {
     private route: Router
   ) {}
 
+  atendenteAtual = localStorage.getItem('atendenteId');
+
   atendimentosList!: Atendimentos[];
 
   formGroup: FormGroup | undefined;
@@ -79,6 +81,8 @@ export class AtendimentosFormComponent implements OnInit {
   atendimentosForm!: FormGroup;
 
   editando: boolean = false;
+
+  currDate = Date.now
 
   idEditando: number | null = null;
 
@@ -106,7 +110,6 @@ export class AtendimentosFormComponent implements OnInit {
 
     this.formGroup = new FormGroup({});
 
-    this.getAtendimentos();
     this.atendimentosForm = this.fb.group({
       problemaApresentado: ['', Validators.required],
       resolucaoDoProblema: ['', Validators.required],
@@ -117,9 +120,20 @@ export class AtendimentosFormComponent implements OnInit {
       atendenteId: ['', Validators.required],
       clienteId: ['', Validators.required],
     });
+
+    this.getAtendimentos();
   }
 
-  addAtendimento() {}
+  addAtendimento() {
+    const atendimento: Atendimentos = {
+      clienteId: this.atendimentosForm.value.clienteId ?? '',
+      problemaApresentado: this.atendimentosForm.value.problemaApresentado ?? '',
+      resolucaoDoProblema: this.atendimentosForm.value.resolucaoDoProblema ?? '',
+      dataAtendimento: this.atendimentosForm.value.dataAtendimento ?? '',
+      dataInclusao: new Date??'',
+      atendenteId: this.atendenteAtual = JSON.parse(localStorage.getItem('atendenteAtual')!),
+    }
+}
 
   getAtendimentos() {
     this.as.getAtendimentos().subscribe({
@@ -154,8 +168,6 @@ export class AtendimentosFormComponent implements OnInit {
     event.preventDefault();
     this.visivel = false;
   }
-
-
 
   cancelarForm() {
     this.atendimentosForm.reset();

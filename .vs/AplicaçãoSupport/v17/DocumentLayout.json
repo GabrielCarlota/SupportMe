@@ -21,21 +21,20 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
+          "DockedWidth": 350,
           "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Aplica\u00E7\u00E3oSupport",
+              "Title": "Aplica\u00E7\u00E3oSupport.csproj",
               "DocumentMoniker": "D:\\GitHub\\Projetos\\SupportMe\\Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj",
               "RelativeDocumentMoniker": "Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj",
               "ToolTip": "D:\\GitHub\\Projetos\\SupportMe\\Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj",
               "RelativeToolTip": "Aplica\u00E7\u00E3oSupport\\Aplica\u00E7\u00E3oSupport.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-05-18T20:48:39.885Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-18T20:48:39.885Z"
             },
             {
               "$type": "Document",
@@ -45,7 +44,7 @@
               "RelativeDocumentMoniker": "Aplica\u00E7\u00E3oSupport\\appsettings.json",
               "ToolTip": "D:\\GitHub\\Projetos\\SupportMe\\Aplica\u00E7\u00E3oSupport\\appsettings.json",
               "RelativeToolTip": "Aplica\u00E7\u00E3oSupport\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-05-18T20:34:50.194Z",
               "EditorCaption": ""
@@ -60,8 +59,17 @@
               "RelativeToolTip": "Aplica\u00E7\u00E3oSupport\\Program.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAawBUAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T20:34:48.615Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-18T20:34:48.615Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 50,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             }
           ]
         }

@@ -36,7 +36,7 @@ import { Divider } from 'primeng/divider';
   styleUrl: './login-form.component.css',
   providers: [MessageService],
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent{
   constructor(
     private http: HttpClient,
     private servicoAtendente: AtendenteService,
@@ -44,26 +44,10 @@ export class LoginFormComponent implements OnInit {
     private ms: MessageService
   ) {}
 
-  atendenteList!: Atendente[];
-
-  accept: boolean = false;
-
   loginForm = new FormGroup({
     nomeAtendente: new FormControl(''),
     senha: new FormControl(''),
   });
-
-  ngOnInit(): void {
-    this.servicoAtendente.getAtendentes().subscribe({
-      next: (value) => {
-        this.atendenteList = value;
-        console.log(value);
-      },
-      error(err) {
-        console.log(err?.err.error);
-      },
-    });
-  }
 
   toRegister(){
     this.route.navigate(['/registro'])
@@ -86,6 +70,7 @@ export class LoginFormComponent implements OnInit {
           detail: 'Login Efetuado com sucesso',
           life: 5000,
         });
+        localStorage.setItem('atendenteAtual', '2')
         this.route.navigate(['homepage']);
       },
       error: (err) => {

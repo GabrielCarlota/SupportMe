@@ -8,6 +8,12 @@
       [(visible)]="visivel"
       [style]="{ width: '700px', height: '600px' }"
     >
+      <!-- Formulario de inclusão de dados-->
+      <!-- Formulario de inclusão de dados-->
+      <!-- Formulario de inclusão de dados-->
+      <!-- Formulario de inclusão de dados-->
+      <!-- Formulario de inclusão de dados-->
+
       <form [formGroup]="atendimentosForm" (submit)="addAtendimento()">
         <span class="p-text-secondary block mb-8"
           >Adicione um Atendimento.</span
@@ -30,8 +36,30 @@
             </p-floatlabel>
 
             <p-floatlabel class="flex-1">
-              <p-datepicker [showTime]="true" formControlName="dataAtendimento" [fluid]="true" />
+              <p-datepicker
+                [showTime]="true"
+                formControlName="dataAtendimento"
+                [fluid]="true"
+              />
               <label for="clientes">Data do atendimento</label>
+            </p-floatlabel>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-4 mb-8">
+          <div class="flex flex-1 min-w-[240px] gap-4">
+            <p-floatlabel class="flex-1">
+              <p-select
+                [editable]="true"
+                formControlName="clienteId"
+                [options]="attClientesOptions"
+                optionValue="clienteId"
+                optionLabel="clienteNome"
+                placeholder="Cliente"
+                class="w-full"
+              >
+              </p-select>
+              <label for="clientes">Empresa:</label>
             </p-floatlabel>
           </div>
         </div>
@@ -105,6 +133,13 @@
           (onClick)="exportXlsx()"
         ></p-button>
       </div>
+
+      <!-- Tabela de dados-->
+      <!-- Tabela de dados-->
+      <!-- Tabela de dados-->
+      <!-- Tabela de dados-->
+      <!-- Tabela de dados-->
+      <!-- Tabela de dados-->
 
       <p-table
         #dt
